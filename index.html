@@ -25,7 +25,19 @@
 		.slide pre code{
 			line-height: 3.5ex;
 		}
-		
+		.twocol ul, .twocol ol{
+			float:left;
+			width: 40%;
+			margin:0
+		}
+		.threecol ul, .threecol ol{
+			float:left;
+			width: 33%;
+			margin:0
+		}
+		.tobuild{
+			background:#ffc
+		}
 	</style>
 </head>
 <body class="list">
@@ -91,10 +103,36 @@
 			<ul>
 				<li>Media queries, which extend the @media rules.</li>
 				<li>@supports, which offers native CSS feature detection</li>
+				<li>@viewport, which applies styles based on the document's viewport</li>
 				<li>@document, which applies styles based on the document's URL</li>
 			</ul>
 		</footer>
 	</div></section>
+
+	<section class="slide shout"><div>
+		<h2>What can we use now?</h2>
+	</div></section>
+
+	<section class="slide tobuild"><div>
+		<h2><code>@page</code>: a recap</h2>
+		<p>Set styles for printed media.</p>	
+		<pre><code>@page{
+  
+}</code></pre>
+		<footer>Limited in what you can modify or override. 
+			<ul>
+				<li>margins</li>
+				<li>widows and orphans</li>
+				<li>page breaks</li>
+			</ul>
+		</footer>
+	</div></section>
+	
+	<section class="slide tobuild"><div>
+		<h2>Show some demos?</h2>
+		
+	</div></section>
+
 	<section class="slide"><div>
 		<h2><code>@media</code>: a recap</h2>
 		<p>Set styles for a particular media type.</p>
@@ -106,10 +144,65 @@
     body { line-height: 1.2 }
 }</code></pre>
 	</div></section>
+	
+	<section class="slide shout"><div>
+		<h2>What's<br>new(-ish)?</h2>
+	</div></section>
+	
 	<section class="slide"><div>
 		<h2><code>@media</code> and media queries</h2>
-		<p><a href="http://dev.w3.org/csswg/css3-mediaqueries/">Specification</a> that extends the <code>@media</code> to check for device and viewport support.</p>
+		<p>Applies styles for particular media features.</p>
+<div class="threecol">
+<ul>
+	<li>width</li>
+	<li>height</li>
+	<li>device-width</li>
+	<li>device-height</li>
+	<li>orientation</li>
+</ul>
+
+<ul>
+	<li>aspect-ratio</li>
+	<li>device-aspect-ratio</li>
+	<li>color</li>
+	<li>color-index</li>
+</ul>
+
+<ul>	
+	<li>monochrome</li>
+	<li>resolution</li>
+	<li>scan</li>
+	<li>grid</li>
+</ul>
+
+</div>
 	</div></section>
+	
+	<section class="slide demo"><div>
+		<h2>Show awesome stuff</h2>
+	</div></section>
+
+
+	<section class="slide tobuild"><div>
+		<h2>Media queries best practice</h2>
+		<p>Content break points instead of device break points?</p>	
+		<p>This slide is a candidate to become a note mentioned in the preso instead of a full-fledged slide.
+	</div></section>
+	
+
+	<section class="slide shout detour"><div>
+		<h2>CSS Object Model<br>(CSSOM)</h2>
+	</div></section>
+
+
+	<section class="slide tobuild"><div>
+		<h2>Quick overview of CSSOM</h2>
+		<code>document.styleSheets</code>
+		<p>Style sheets included via &lt;link&gt; or an embedded &lt;style&gt; element.</p>
+		
+	</div></section>
+
+
 	<section class="slide"><div>
 		<h2>Various lists</h2>
 		<ul>
