@@ -1,0 +1,62 @@
+I. Introduction
+	A. About me
+		1. Web developer
+		2. Former member of the Opera Software Developer Relations team
+		3. Now embarking on an entrepreneurial venture (translation: I'm a freelancer for hire)
+		4. Note that it's my last talk for a long time and they should be honored
+	B. About this talk
+		1. Some of this is well-supported and familiar to you.
+		2. Some of this is wildly experimental and supported in one or two browsers
+		3. Take a look at what's now, what's new and what's next.
+	C. What is "Conditional CSS"?
+		1. A new way of looking at some of the things we already know and use.
+		2. CSS features and DOM APIs that allow us to set the conditions under which a set of CSS rules should be applied.
+		3. Several of the at-rules:
+			@page
+			@media
+			@supports
+			@document
+			@regions[1] - WebKit-only, pushed by Adobe
+			@namespace[2] - Might be too complex
+		4. Also some associated CSS Object Model APIs
+			a. window.matchMedia()
+			b. window.CSS.supports(), which in Opera 12 was implemented using the old window.supportsCSS() syntax.
+II. What's now:
+	A. @page: a recap
+		1. About as old as @media
+		2. Used to modify margins, orphans, widows, and page breaks of a printed document
+		3. Simple example (maybe add support for @page to this presentation?)
+		4. More complex example that uses some other @rules inside of @page? 
+			http://dev.w3.org/csswg/css3-page/#at-page-rule
+			https://developer.mozilla.org/en-US/docs/CSS/@page
+	B. @media: a recap
+		1. Been around for ages
+		2. Used to set styles for a particular medium: screen, print, projection, etc.
+		3. Extended with media queries http://dev.w3.org/csswg/css3-mediaqueries/
+			a. Basic syntax
+			b. Simple screen + device-width example
+			c. Orientation example: a. Use with an orientation change event?
+			d. Aspect-ratio and device-aspect-ratio (what's the difference?)	
+			e. Best practices: width breakpoints versus content breakpoints
+III. What's new:
+	A. window.matchMedia()
+		1. DOM/CSSOM API for interacting with media queries.
+		2. Can conditionally add behavior based on its result 
+	B. @supports
+		1. @-rule based CSS features
+		2. window.CSS.supports() API
+	C. Detour into CSS Object Model: FLESH OUT THIS SECTION?
+
+IV. What's next?
+	A. Fancier media queries: Look at Stu Cox' post roundup + include Mozilla and WebKit bugs
+	B. @document, which is currently implemented in Firefox only.
+	   	1. Was part of the Conditional CSS Rules spec, level 3 but moved to Level 4 
+	   	2. https://developer.mozilla.org/en-US/docs/CSS/@document
+		3. Simple example
+		4. More complex example using regexp();
+	C. @regions - WebKit and Adobe
+
+
+[1] http://www.w3.org/TR/2011/WD-css3-regions-20110609/#the-at-region-style-rule
+[2] http://msdn.microsoft.com/en-us/library/ie/ff974080(v=vs.85).aspx
+http://dev.w3.org/csswg/cssom-view/#the-mediaquerylist-interface		

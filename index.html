@@ -1,0 +1,196 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>Conditional CSS</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<link rel="stylesheet" href="shower/themes/bright/styles/screen.css">
+	<!--
+		To apply styles to the certain slides
+		set slide ID to get needed elements
+		-->
+	<style>
+		#Cover h2 {
+			margin:65px 0 0;
+			color:#FFF;
+			text-align:center;
+			font-size:70px;
+			}
+		#Picture h2 {
+			color:#FFF;
+			}
+		.slide code{
+			padding: 2px;
+		}
+		.slide pre code{
+			line-height: 3.5ex;
+		}
+		
+	</style>
+</head>
+<body class="list">
+	<header class="caption">
+		<h1>Conditional CSS</h1>
+		<p><a href="http://tiffanybbrown.com/">Tiffany B. Brown</a>, Funemployed Web Developer</p>
+	</header>
+	<section class="slide cover" id="Cover"><div>
+		<h2>Conditional CSS</h2>
+	</div></section>
+	<!--  data-timing="00:05" -->
+
+	<section class="slide shout"><div>
+		<h2>Who am I?</h2>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Who am I?</h2>
+		<ul>
+			<li>Former member of the Opera Developer Relations Team</li>
+			<li>Currently a freelance web developer</li>
+			<li>Fan of Minneapolis (but not Minneapolis winters)</li>
+		</ul>
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2>About this talk</h2>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>About this talk</h2>
+		<ul>
+			<li>Some of this is well-supported, old news and probably quite familiar to you.</li>
+			<li>Some of this is wildly experimental and supported in one or two browsers</li>
+			<li>Take a look at what's now, what's new and what's next</li>		
+		</ul>
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2>What is Conditional CSS?</h2>
+		<footer>A new way of thinking about some of the things we already know and use. Also a CSS Level 3 module, the Conditional CSS Rules module.</footer>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>What is Conditional CSS?</h2>
+		<p>CSS features and JavaScript APIs that let us specify CSS style rules that are only applied when the condition is met.</p>
+	</div></section>
+			
+	<section class="slide"><div>
+		<h2>Conditional CSS: the <code>@rules</code></h2>
+	
+		<ul>
+			<li><code>@media</code></li>
+			<li class="next"><code>@page</code></li>
+			<li class="next"><code>@supports</code></li>
+			<li class="next"><code>@viewport</code></li>
+			<li class="next"><code>@document</code></li>
+		</ul>
+
+		<footer>
+			<p>Includes our old friends, @media and @page, which were part of the CSS Level 2 specification.</p>
+			<p>Newer features and APIs</p>
+			<ul>
+				<li>Media queries, which extend the @media rules.</li>
+				<li>@supports, which offers native CSS feature detection</li>
+				<li>@document, which applies styles based on the document's URL</li>
+			</ul>
+		</footer>
+	</div></section>
+	<section class="slide"><div>
+		<h2><code>@media</code>: a recap</h2>
+		<p>Set styles for a particular media type.</p>
+		
+		<pre><code>@media print{
+    body { font-size: 10pt }
+}
+@media screen, print {
+    body { line-height: 1.2 }
+}</code></pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2><code>@media</code> and media queries</h2>
+		<p><a href="http://dev.w3.org/csswg/css3-mediaqueries/">Specification</a> that extends the <code>@media</code> to check for device and viewport support.</p>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Various lists</h2>
+		<ul>
+			<li>Simple lists are marked with bullets.</li>
+			<li>Ordered lists begin with a number.</li>
+			<li>You can even nest lists one inside another.
+				<ol>
+					<li>Or mix their types.</li>
+					<li>But do not go too far.</li>
+					<li>Otherwise audience will be bored.</li>
+				</ol>
+			</li>
+			<li>Look, seven rows exactly!</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Serious citation</h2>
+		<figure>
+			<blockquote>
+				<p>You can wrap one or more paragraphs into citation, which will make text italic and add a nice quote on the left. Giving the citation source would make it even more serious.</p>
+			</blockquote>
+			<figcaption>Vadim Makeev</figcaption>
+		</figure>
+	</div></section>
+	<section class="slide"><div>
+		<h2>When you have a lot of code</h2>
+		<pre>
+			<code>&lt;html lang="en"&gt;</code>
+			<code><mark>&lt;head&gt;</mark> <mark class="comment">&lt;!--Comment--&gt;</mark></code>
+			<code>    &lt;title&gt;Shower&lt;/title&gt;</code>
+			<code>    &lt;meta charset="<mark class="important">UTF-8</mark>"&gt;</code>
+			<code>    &lt;link rel="stylesheet" href="s/screen.css"&gt;</code>
+			<code>    &lt;script src="j/jquery.js"&gt;&lt;/script&gt;</code>
+			<code><mark>&lt;/head&gt;</mark></code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Code in separate blocks</h2>
+		<pre>
+			<code><mark>&lt;html</mark> lang="en"&gt;</code>
+		</pre>
+		<p class="note">Now you can add a note for each block</p>
+		<pre>
+			<code><mark>&lt;meta</mark> charset="<mark>UTF-8</mark>"&gt;</code>
+		</pre>
+		<p class="note">And explain what is interesting about it</p>
+	</div></section>
+	<section class="slide shout"><div>
+		<h2>You can shout<br> this way</h2>
+	</div></section>
+	<section class="slide cover" id="Picture"><div>
+		<h2>And place any picture</h2>
+		<img src="pictures/picture.jpg" alt="">
+	</div></section>
+	<section class="slide"><div>
+		<h2>Inner navigation</h2>
+		<ol>
+			<li>Lets you change objects one by one</li>
+			<li class="next">For example, show list items</li>
+			<li class="next">Or switch pictures</li>
+			<li class="next">And much more</li>
+			<li class="next">But it will work only once</li>
+		</ol>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Conditional CSS</h2>
+		<p>Tiffany B. Brown</p>
+		<ul>
+			<li><a href="http://tiffanybbrown.com/">tiffanybbrown.com</a></li>
+			<li><a href="http://twitter.com/webinista">twitter.com/webinista</a></li>
+			<li>Slides at: <a href="http://webinista.github.com/Conditional-CSS/">http://webinista.github.com/Conditional-CSS/</a></li>
+		</ul>
+	</div></section>
+	
+	<!--
+		To hide progress bar from entire presentation
+		just remove “progress” element.
+		-->
+	<div class="progress"><div></div></div>
+	<script src="shower/shower.min.js"></script>
+	<!-- Copyright © 2010–2013 Vadim Makeev — pepelsbey.net -->
+	<!-- Photos by John Carey — fiftyfootshadows.net -->
+</body>
+</html>
