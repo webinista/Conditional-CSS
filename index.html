@@ -38,6 +38,9 @@
 		.tobuild{
 			background:#ffc
 		}
+		.atrisk{
+			opacity: .5;
+		}
 	</style>
 </head>
 <body class="list">
@@ -183,41 +186,48 @@
 	</div></section>
 
 
-	<section class="slide tobuild"><div>
+	<section class="slide tobuild atrisk"><div>
 		<h2>Media queries best practice</h2>
 		<p>Content break points instead of device break points?</p>	
 		<p>This slide is a candidate to become a note mentioned in the preso instead of a full-fledged slide.
 	</div></section>
 	
 
-	<section class="slide shout detour"><div>
+	<section class="slide shout detour atrisk"><div>
 		<h2>CSS Object Model<br>(CSSOM)</h2>
 	</div></section>
 
 
-	<section class="slide tobuild"><div>
+	<section class="slide tobuild atrisk"><div>
 		<h2>Quick overview of CSSOM</h2>
 		<code>document.styleSheets</code>
 		<p>Style sheets included via &lt;link&gt; or an embedded &lt;style&gt; element.</p>
-		
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2>matchMedia()</h2>
+	</div></section>
+
+	<section class="slide tobuild"><div>
+		<h2>window.matchMedia()</h2>
+		<p>A CSSOM / DOM API for interacting with media queries</p>
+	</div></section>
+
+
+	<section class="slide shout"><div>
+		<h2>@supports</h2>
 	</div></section>
 
 
 	<section class="slide"><div>
-		<h2>Various lists</h2>
-		<ul>
-			<li>Simple lists are marked with bullets.</li>
-			<li>Ordered lists begin with a number.</li>
-			<li>You can even nest lists one inside another.
-				<ol>
-					<li>Or mix their types.</li>
-					<li>But do not go too far.</li>
-					<li>Otherwise audience will be bored.</li>
-				</ol>
-			</li>
-			<li>Look, seven rows exactly!</li>
-		</ul>
+		<h2>@supports</h2>
+		<p>Applies CSS only when the property is supported and the value is valid.</p>
+<pre><code>@supports ( property: value-to-test ){
+	/* CSS rules to apply */
+}</code></pre>
 	</div></section>
+
+
 	<section class="slide"><div>
 		<h2>Serious citation</h2>
 		<figure>
