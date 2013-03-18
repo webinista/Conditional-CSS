@@ -4,12 +4,12 @@
 	<title>Conditional CSS</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=792, user-scalable=no">
-	<link rel="stylesheet" href="shower/themes/bright/styles/screen.css">
+	<link rel="stylesheet" href="shower/themes/bright/styles/screen.css" type="text/css">
 	<!--
 		To apply styles to the certain slides
 		set slide ID to get needed elements
 		-->
-	<style>
+	<style type="text/css" id="local" title="local">
 		#Cover h2 {
 			margin:65px 0 0;
 			color:#FFF;
@@ -19,6 +19,13 @@
 		#Picture h2 {
 			color:#FFF;
 			}
+		.caption h1{
+			font-family: 'Open Sans';
+		}
+		.slide.shout, .full .progress div{background:#c09;}
+		.slide a, .caption a{
+			color:#03f;
+		}
 		.slide code{
 			padding: 2px;
 		}
@@ -41,12 +48,50 @@
 		.atrisk{
 			opacity: .5;
 		}
+		.browsercompat{
+			width: 100%;
+			border:1px solid #ccc;
+			border-collapse:collapse;
+		}
+		
+		.browsercompat th, .browsercompat td{
+			border:1px solid #ccc;
+			padding: .5em;
+			vertical-align: bottom;
+			text-align:center;
+			font-size:.8em;
+		}
+		.browsercompat th{
+			background:#ffc;
+		}
+		.yes{color:#0c0;}
+		.no{color: #c00;}
+		.sorta{color: #fc0;}
+		.maybe{color:#f60;}
+		.logo{width:3em;height:3em;display:block;margin:0 auto}
+	
+		.slide .footnote{
+			line-height:1.3;
+			font-size: .8em;
+			color:#777;
+			margin-top:1em;
+		}
+		.slide .footnote a{
+			color:#777;
+		}
+		
+		.slide ol li, .slide ul li{
+			margin-bottom: 1ex;
+		}
+		.slide footer ol li, .slide footer ul li{
+			margin-bottom:0;
+		}
 	</style>
 </head>
 <body class="list">
 	<header class="caption">
 		<h1>Conditional CSS</h1>
-		<p><a href="http://tiffanybbrown.com/">Tiffany B. Brown</a>, Funemployed Web Developer</p>
+		<p><a href="http://tiffanybbrown.com/">Tiffany B. Brown</a>, Freelance Web Developer</p>
 	</header>
 	<section class="slide cover" id="Cover"><div>
 		<h2>Conditional CSS</h2>
@@ -75,54 +120,78 @@
 		<ul>
 			<li>Some of this is well-supported, old news and probably quite familiar to you.</li>
 			<li>Some of this is wildly experimental and supported in one or two browsers</li>
-			<li>Take a look at what's now, what's new and what's next</li>		
 		</ul>
+		<footer>Experimental stuff is still worth mentioning because it could well become our developer future.</footer>
 	</div></section>
 
 	<section class="slide shout"><div>
 		<h2>What is Conditional CSS?</h2>
-		<footer>A new way of thinking about some of the things we already know and use. Also a CSS Level 3 module, the Conditional CSS Rules module.</footer>
+		<footer>A new way of thinking about some of the things we already know and use. Parts are also defined by the CSS Conditional Rules Module Level 3.</footer>
 	</div></section>
 
 	<section class="slide"><div>
 		<h2>What is Conditional CSS?</h2>
-		<p>CSS features and JavaScript APIs that let us specify CSS style rules that are only applied when the condition is met.</p>
+		<p>CSS features and their associated JavaScript APIs that let us apply styles or behaviors when a particular condition is met.</p>
 	</div></section>
 			
 	<section class="slide"><div>
 		<h2>Conditional CSS: the <code>@rules</code></h2>
 	
 		<ul>
-			<li><code>@media</code></li>
-			<li class="next"><code>@page</code></li>
+			<li><code>@page</code></li>
+			<li class="next"><code>@media</code></li>
 			<li class="next"><code>@supports</code></li>
 			<li class="next"><code>@viewport</code></li>
 			<li class="next"><code>@document</code></li>
 		</ul>
 
 		<footer>
-			<p>Includes our old friends, @media and @page, which were part of the CSS Level 2 specification.</p>
-			<p>Newer features and APIs</p>
+			<p>Includes our old friends, @media and @page, which were part of the CSS Level 2 specification, and newer features and APIs:</p>
 			<ul>
-				<li>Media queries, which extend the @media rules.</li>
-				<li>@supports, which offers native CSS feature detection</li>
-				<li>@viewport, which applies styles based on the document's viewport</li>
-				<li>@document, which applies styles based on the document's URL</li>
+				<li>Media queries, Generated Content for Paged Media extend @media.</li>
+				<li>@supports offers native, CSS-based feature detection</li>
+				<li>@viewport applies styles based on the document's viewport</li>
+				<li>@document applies styles based on the document's URL or URL pattern</li>
 			</ul>
+			<p>Some of these also have JavaScript or DOM APIs, so you can use them with scripting.</p>
 		</footer>
 	</div></section>
 
-	<section class="slide shout"><div>
-		<h2>What can we use now?</h2>
-	</div></section>
+	<section class="slide" id="at-page-browser-support"><div>
+		<h2><code>@page</code> browser support</h2>
+		<table class="browsercompat">
+		<tr>
+		   <th><img src="pictures/ie.svg" class="logo" alt="Internet Explorer logo">IE</th>
+		   <th><img src="pictures/firefox.svg" class="logo" alt="Internet Explorer logo">Firefox</th>
+		   <th><img src="pictures/chrome.svg" class="logo" alt="Chrome logo">Chrome</th>
+		   <th><img src="pictures/safari.png" class="logo" alt="Safari logo">Safari</th>	
+		   <th><img src="pictures/opera.svg" class="logo" alt="Opera logo">Opera</th>				
+		   <th><img src="pictures/android.svg" class="logo" alt="Android logo">Android</th>
+		   <th><img src="pictures/blackberry.svg" class="logo" alt="BlackBerry logo" style="width: 4em">Blackberry</th>
+		</tr>
+		
+		<tr>
+		   <td class="yes">8</td class="yes">
+		   <td class="yes">19*</td class="yes">
+		   <td class="yes">4.0</td class="yes">
+		   <td class="yes">5</td class="yes">	
+		   <td class="yes">6</td class="yes">		
+		   <td class="no">-</td class="yes">		
+		   <td class="maybe">?</td class="yes">
+		</tr>
+	</table>
+	<p class="footnote">*Desktop and mobile. Other browsers feature desktop-only support. (<a href="https://developer.mozilla.org/en-US/docs/CSS/@page">Source</a>)</p>
+	<footer>Even though @page has been around for years, basic implementations have started to land in some of the most popular browsers fairly recently.</div></section>
+
 
 	<section class="slide tobuild"><div>
 		<h2><code>@page</code>: a recap</h2>
-		<p>Set styles for printed media.</p>	
+		<p>Set styles for paged media.</p>	
 		<pre><code>@page{
   
 }</code></pre>
-		<footer>Limited in what you can modify or override. 
+		<footer>
+		Pages can be paper, transparencies, or screen-based. Limited in what you can modify or override. 
 			<ul>
 				<li>margins</li>
 				<li>widows and orphans</li>
@@ -130,11 +199,21 @@
 			</ul>
 		</footer>
 	</div></section>
-	
-	<section class="slide tobuild"><div>
+
+
+		
+	<section class="slide tobuild demo"><div>
 		<h2>Show some demos?</h2>
 		
 	</div></section>
+
+	<section class="slide tobuild demo"><div>
+		<h2>Show some GCPM demos</h2>
+		
+		<footer>As cool as it is, Generated Content for Paged Media is only available in an old Presto-based
+	</div></section>
+
+
 
 	<section class="slide"><div>
 		<h2><code>@media</code>: a recap</h2>
@@ -149,49 +228,76 @@
 	</div></section>
 	
 	<section class="slide shout"><div>
-		<h2>What's<br>new(-ish)?</h2>
+		<h2>Media queries</h2>
 	</div></section>
 	
 	<section class="slide"><div>
 		<h2><code>@media</code> and media queries</h2>
 		<p>Applies styles for particular media features.</p>
-<div class="threecol">
-<ul>
-	<li>width</li>
-	<li>height</li>
-	<li>device-width</li>
-	<li>device-height</li>
-	<li>orientation</li>
-</ul>
+		<div class="threecol">
+		<ul>
+			<li>width</li>
+			<li>height</li>
+			<li>device-width</li>
+			<li>device-height</li>
+			<li>orientation</li>
+		</ul>
 
-<ul>
-	<li>aspect-ratio</li>
-	<li>device-aspect-ratio</li>
-	<li>color</li>
-	<li>color-index</li>
-</ul>
+		<ul>
+			<li>aspect-ratio</li>
+			<li>device-aspect-ratio</li>
+			<li>color</li>
+			<li>color-index</li>
+		</ul>
 
-<ul>	
-	<li>monochrome</li>
-	<li>resolution</li>
-	<li>scan</li>
-	<li>grid</li>
-</ul>
+		<ul>	
+			<li>monochrome</li>
+			<li>resolution</li>
+			<li>scan</li>
+			<li>grid</li>
+		</ul>
 
-</div>
+		</div>
 	</div></section>
+
+	<section class="slide" id="media-queries-browser-support"><div>
+		<h2>Media queries browser support</h2>
+		<table class="browsercompat">
+		<tr>
+		   <th><img src="pictures/ie.svg" class="logo" alt="Internet Explorer logo">IE</th>
+		   <th><img src="pictures/firefox.svg" class="logo" alt="Internet Explorer logo">Firefox</th>
+		   <th><img src="pictures/chrome.svg" class="logo" alt="Chrome logo">Chrome</th>
+		   <th><img src="pictures/safari.png" class="logo" alt="Safari logo">Safari</th>	
+		   <th><img src="pictures/opera.svg" class="logo" alt="Opera logo">Opera</th>				
+		   <th><img src="pictures/android.svg" class="logo" alt="Android logo">Android</th>
+		   <th><img src="pictures/blackberry.svg" class="logo" alt="BlackBerry logo" style="width: 4em">Blackberry</th>
+		</tr>
+		
+		<tr>
+		   <td class="yes">9+</td class="yes">
+		   <td class="yes">3.5+</td class="yes">
+		   <td class="yes">4.0</td class="yes">
+		   <td class="yes">3.2*</td class="yes">	
+		   <td class="yes">10**</td class="yes">		
+		   <td class="yes">2.1+</td class="yes">		
+		   <td class="yes">7.0</td class="yes">
+		</tr>
+	</table>
+	<p class="footnote">*Safari had full support in desktop as of version 4.0.<br>**Opera gained full support in desktop as of version 9.5. (<a href="http://caniuse.com/#search=media%20queries">Source: CanIUse.com</a>)</p>
+	</div></section>
+
 	
 	<section class="slide demo"><div>
 		<h2>Show awesome stuff</h2>
+		
+		<footer>
+		<p>Worth mentioning that you should use <em>content-based</em> breakpoints for your site rather than <em>device-width based</em> breakpoints.</p>
+		
+		<p>Don't set breakpoints based onparticular device widths where you use known widths for  for "desktop," iPad, Nexus 7, or the iPhone, etc. Set them at the point where your content no longer looks good.</p>
+		
+		<p>Easier to do with new viewport units (<a href="http://www.w3.org/TR/css3-values/">http://www.w3.org/TR/css3-values/</a>), but they're not widely supported by mobile browsers yet. (Source: <a href="http://caniuse.com/viewport-units">http://caniuse.com/viewport-units</a>)</p> 
 	</div></section>
 
-
-	<section class="slide tobuild atrisk"><div>
-		<h2>Media queries best practice</h2>
-		<p>Content break points instead of device break points?</p>	
-		<p>This slide is a candidate to become a note mentioned in the preso instead of a full-fledged slide.
-	</div></section>
-	
 
 	<section class="slide shout detour atrisk"><div>
 		<h2>CSS Object Model<br>(CSSOM)</h2>
@@ -208,75 +314,163 @@
 		<h2>matchMedia()</h2>
 	</div></section>
 
+		<section class="slide" id="match-media-browser-support"><div>
+		<h2><code>matchMedia()</code> browser support</h2>
+		<table class="browsercompat">
+		<tr>
+		   <th><img src="pictures/ie.svg" class="logo" alt="Internet Explorer logo">IE</th>
+		   <th><img src="pictures/firefox.svg" class="logo" alt="Firefox logo">Firefox</th>
+		   <th><img src="pictures/chrome.svg" class="logo" alt="Chrome logo">Chrome</th>
+		   <th><img src="pictures/safari.png" class="logo" alt="Safari logo">Safari</th>	
+		   <th><img src="pictures/opera.svg" class="logo" alt="Opera logo">Opera</th>				
+		   <th><img src="pictures/android.svg" class="logo" alt="Android logo">Android</th>
+		   <th><img src="pictures/blackberry.svg" class="logo" alt="BlackBerry logo" style="width: 4em">Blackberry</th>
+		</tr>
+		
+		<tr>
+		   <td class="yes">10+</td class="yes">
+		   <td class="yes">6+ *</td class="yes">
+		   <td class="yes">9+ *</td class="yes">
+		   <td class="yes">5.1</td class="yes">	
+		   <td class="yes">12.1</td class="yes">		
+		   <td class="yes">3+</td class="yes">		
+		   <td class="yes">10</td class="yes">
+		</tr>
+	</table>
+	<p class="footnote">*Available in Chrome for Android as of version 25 and Firefox for Android as of versio 19. (<a href="http://caniuse.com/#search=matchmedia">Source: CanIUse.com</a>).</p>
+	<footer>Support pretty well parallels support for media queries in most recent browser versions.</footer>
+	</div></section>
+	
 	<section class="slide tobuild"><div>
 		<h2>window.matchMedia()</h2>
 		<p>A CSSOM / DOM API for interacting with media queries</p>
 	</div></section>
 
 
+
 	<section class="slide shout"><div>
 		<h2>@supports</h2>
+	</div></section>
+
+	<section class="slide" id="at-supports-browser-support"><div>
+		<h2><code>@supports</code> browser support</h2>
+		<table class="browsercompat">
+		<tr>
+		   <th><img src="pictures/ie.svg" class="logo" alt="Internet Explorer logo">IE</th>
+		   <th><img src="pictures/firefox.svg" class="logo" alt="Internet Explorer logo">Firefox</th>
+		   <th><img src="pictures/chrome.svg" class="logo" alt="Chrome logo">Chrome</th>
+		   <th><img src="pictures/safari.png" class="logo" alt="Safari logo">Safari</th>	
+		   <th><img src="pictures/opera.svg" class="logo" alt="Opera logo">Opera</th>				
+		   <th><img src="pictures/android.svg" class="logo" alt="Android logo">Android</th>
+		   <th><img src="pictures/blackberry.svg" class="logo" alt="BlackBerry logo" style="width: 4em">Blackberry</th>
+		</tr>
+		
+		<tr>
+		   <td class="no">-</td class="yes">
+		   <td class="yes">20+</td class="yes">
+		   <td class="no">-</td class="yes">
+		   <td class="no">-</td class="yes">	
+		   <td class="yes">12.1</td class="yes">		
+		   <td class="no">-</td class="yes">		
+		   <td class="no">-</td class="yes">
+		</tr>
+	</table>
+	<p class="footnote">(<a href="http://caniuse.com/#search=supports">Source: CanIUse.com</a>).</p>
+	<footer>WebKit has support</a> available in the codebase, but it has not made its way into a Safari, Chrome, Chromium release. See: http://trac.webkit.org/changeset/142739</footer>
 	</div></section>
 
 
 	<section class="slide"><div>
 		<h2>@supports</h2>
-		<p>Applies CSS only when the property is supported and the value is valid.</p>
-<pre><code>@supports ( property: value-to-test ){
+		<p>Applies CSS only when the property is supported <em>and</em> the value is valid.</p>
+<pre><code>@supports &lt;not&gt;( property: value-to-test ){
 	/* CSS rules to apply */
 }</code></pre>
 	</div></section>
 
 
-	<section class="slide"><div>
-		<h2>Serious citation</h2>
-		<figure>
-			<blockquote>
-				<p>You can wrap one or more paragraphs into citation, which will make text italic and add a nice quote on the left. Giving the citation source would make it even more serious.</p>
-			</blockquote>
-			<figcaption>Vadim Makeev</figcaption>
-		</figure>
+	<section class="slide demo tobuild"><div>
+		<h2>Show awesome @supports stuff</h2>
 	</div></section>
-	<section class="slide"><div>
-		<h2>When you have a lot of code</h2>
-		<pre>
-			<code>&lt;html lang="en"&gt;</code>
-			<code><mark>&lt;head&gt;</mark> <mark class="comment">&lt;!--Comment--&gt;</mark></code>
-			<code>    &lt;title&gt;Shower&lt;/title&gt;</code>
-			<code>    &lt;meta charset="<mark class="important">UTF-8</mark>"&gt;</code>
-			<code>    &lt;link rel="stylesheet" href="s/screen.css"&gt;</code>
-			<code>    &lt;script src="j/jquery.js"&gt;&lt;/script&gt;</code>
-			<code><mark>&lt;/head&gt;</mark></code>
-		</pre>
-	</div></section>
-	<section class="slide"><div>
-		<h2>Code in separate blocks</h2>
-		<pre>
-			<code><mark>&lt;html</mark> lang="en"&gt;</code>
-		</pre>
-		<p class="note">Now you can add a note for each block</p>
-		<pre>
-			<code><mark>&lt;meta</mark> charset="<mark>UTF-8</mark>"&gt;</code>
-		</pre>
-		<p class="note">And explain what is interesting about it</p>
-	</div></section>
+
+
 	<section class="slide shout"><div>
-		<h2>You can shout<br> this way</h2>
+		<h2>CSS.supports()</h2>
 	</div></section>
-	<section class="slide cover" id="Picture"><div>
-		<h2>And place any picture</h2>
-		<img src="pictures/picture.jpg" alt="">
+
+	<section class="slide demo tobuild"><div>
+		<h2>Talk about the API</h2>
+		<p>Maybe brag a little about my own foray into polyfill land.</p>
 	</div></section>
+
+
+	<section class="slide shout"><div>
+		<h2>What's next?</h2>
+	</div></section>
+
+	<section class="slide shout"><div>
+		<h2>@document</h2>
+	</div></section>
+
+
+	<section class="slide" id="at-document-browser-support"><div>
+		<h2><code>@document</code> browser support</h2>
+		<table class="browsercompat">
+		<tr>
+		   <th><img src="pictures/ie.svg" class="logo" alt="Internet Explorer logo">IE</th>
+		   <th><img src="pictures/firefox.svg" class="logo" alt="Internet Explorer logo">Firefox</th>
+		   <th><img src="pictures/chrome.svg" class="logo" alt="Chrome logo">Chrome</th>
+		   <th><img src="pictures/safari.png" class="logo" alt="Safari logo">Safari</th>	
+		   <th><img src="pictures/opera.svg" class="logo" alt="Opera logo">Opera</th>				
+		   <th><img src="pictures/android.svg" class="logo" alt="Android logo">Android</th>
+		   <th><img src="pictures/blackberry.svg" class="logo" alt="BlackBerry logo" style="width: 4em">Blackberry</th>
+		</tr>
+		
+		<tr>
+		   <td class="no">-</td class="yes">
+		   <td class="yes">6+*</td class="yes">
+		   <td class="no">-</td class="yes">
+		   <td class="no">-</td class="yes">
+		   <td class="no">-</td class="yes">
+		   <td class="no">-</td class="yes">-</td class="yes">		
+		   <td class="maybe">?</td class="yes">
+		</tr>
+	</table>
+	<p class="footnote">*Partial support available in version 1.5 with a <code>-moz-</code> prefix.<br>(<a href="https://developer.mozilla.org/en-US/docs/CSS/@document">Source: Mozilla Developer Network</a>)</p>
+	<footer>Was originally part of the CSS Conditional Rules Module Level 3 (<a href="http://www.w3.org/TR/css3-conditional/">http://www.w3.org/TR/css3-conditional/</a>), but was pushed to Level 4.</div></section>
+	
 	<section class="slide"><div>
-		<h2>Inner navigation</h2>
-		<ol>
-			<li>Lets you change objects one by one</li>
-			<li class="next">For example, show list items</li>
-			<li class="next">Or switch pictures</li>
-			<li class="next">And much more</li>
-			<li class="next">But it will work only once</li>
-		</ol>
+		<h2>@document</h2>
+		<ul>
+			<li>Apply styles based on the document URI: per-domain or per-page.</li>
+			<li class="next">Created with a user style sheets use case in mind.</li>
+		</ul>
+		<footer>Issues to be worked-out for Level 4 involve other use cases.
+		<ul>
+			<li>Might be useful for browser vendors to ship site patches for users. </li>
+			<li>Possibility of using it to organize styles by domain.</li>
+		</ul>
+		</footer>
 	</div></section>
+
+	<section class="slide tobuild"><div>
+		<h2>More awesome media queries (Level 4)</h2>
+		<ul>
+			<li>http://dev.w3.org/csswg/mediaqueries4/</li>
+			<li>https://bugs.webkit.org/show_bug.cgi?id=87403</li>
+			<li>http://www.stucox.com/blog/the-good-and-bad-of-level-4-media-queries/</li>
+		</ul>
+	</div></section>
+
+
+	<section class="slide tobuild atrisk"><div>
+		<h2>@regions</h2>
+		<ul>
+			<li>http://dev.w3.org/csswg/css3-regions/</li>
+		</ul>
+	
+	</div></section>
+
 	<section class="slide"><div>
 		<h2>Conditional CSS</h2>
 		<p>Tiffany B. Brown</p>
