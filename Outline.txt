@@ -12,42 +12,39 @@ I. Introduction
 		1. A new way of looking at some of the things we already know and use.
 		2. CSS features and DOM APIs that allow us to set the conditions under which a set of CSS rules should be applied.
 		3. Several of the at-rules:
-			@page
-			@media
-			@supports
-			@document
-			@regions[1] - WebKit-only, pushed by Adobe
-			@namespace[2] - Might be too complex
-		4. Also some associated CSS Object Model APIs
-			a. window.matchMedia()
-			b. window.CSS.supports(), which in Opera 12 was implemented using the old window.supportsCSS() syntax.
-II. What's now:
-	A. @page: a recap
-		1. About as old as @media
-		2. Used to modify margins, orphans, widows, and page breaks of a printed document
-		3. Simple example (maybe add support for @page to this presentation?)
-		4. More complex example that uses some other @rules inside of @page? 
-			http://dev.w3.org/csswg/css3-page/#at-page-rule
-			https://developer.mozilla.org/en-US/docs/CSS/@page
-	B. @media: a recap
-		1. Been around for ages
-		2. Used to set styles for a particular medium: screen, print, projection, etc.
-		3. Extended with media queries http://dev.w3.org/csswg/css3-mediaqueries/
-			a. Basic syntax
-			b. Simple screen + device-width example
-			c. Orientation example: a. Use with an orientation change event?
-			d. Aspect-ratio and device-aspect-ratio (what's the difference?)	
-			e. Best practices: width breakpoints versus content breakpoints
-III. What's new:
-	A. window.matchMedia()
+			a. @media
+			b. @supports
+			c. @viewport[3][4][13]
+			d. @document - Experimental, only in Firefox
+			e. @page if there's time.
+II. @media: a recap
+	A. Been around for ages
+	B. Used to set styles for a particular medium: screen, print, projection, etc.
+	C. Extended with media queries http://dev.w3.org/csswg/css3-mediaqueries/
+		1. Basic syntax
+		2. Simple screen + device-width example
+		3. Orientation example: a. Use with an orientation change event?
+		4. Aspect-ratio and device-aspect-ratio (what's the difference?)	
+		5. Best practices: width breakpoints versus content breakpoints
+		6. CSSOM [8]
+	D. window.matchMedia()
 		1. DOM/CSSOM API for interacting with media queries.
 		2. Can conditionally add behavior based on its result 
-	B. @supports
-		1. @-rule based CSS features
-		2. window.CSS.supports() API
-	C. Detour into CSS Object Model: FLESH OUT THIS SECTION?
+		3. Polyfills and the like
+			a. matchMedia.js available https://github.com/paulirish/matchMedia.js/
+			b. YUI Gallery Module https://github.com/nzakas/yui3-gallery/tree/master/src/gallery-media
+		4. Browser bugs[7]
+		5. What about to conditionally load style sheets? [14]
+III. @supports
+		A. @-rule based CSS features
+		B. window.CSS.supports() API
+IV.  @viewport
+		A. Viewport meta tag review
+		B. CSS feature set in IE and Opera
 
-IV. What's next?
+IV. Detour into CSS Object Model maybe?: FLESH OUT THIS SECTION?
+
+V. What's next?
 	A. Fancier media queries: Look at Stu Cox' post roundup + include Mozilla and WebKit bugs
 	B. @document, which is currently implemented in Firefox only.
 	   	1. Was part of the Conditional CSS Rules spec, level 3 but moved to Level 4 
@@ -59,4 +56,20 @@ IV. What's next?
 
 [1] http://www.w3.org/TR/2011/WD-css3-regions-20110609/#the-at-region-style-rule
 [2] http://msdn.microsoft.com/en-us/library/ie/ff974080(v=vs.85).aspx
-http://dev.w3.org/csswg/cssom-view/#the-mediaquerylist-interface		
+[3] http://msdn.microsoft.com/en-us/library/ie/hh869615(v=vs.85).aspx
+[4] http://docs.webplatform.org/wiki/css/atrules/@viewport
+[5] https://github.com/andreasbovens/understanding-viewport
+[6] http://dev.opera.com/articles/view/an-introduction-to-meta-viewport-and-viewport/
+[7] http://www.nczonline.net/blog/2012/01/19/css-media-queries-in-javascript-part-2/
+[8] http://dev.w3.org/csswg/cssom-view/#the-mediaquerylist-interface	
+[9] http://dev.w3.org/csswg/css3-gcpm/
+[10] http://people.opera.com/howcome/2011/reader/index.html
+[11] http://people.opera.com/cmills/orarticle/
+[12] http:/dev.opera.com/articles/view/opera-reader-a-new-way-to-read-the-web/
+[13] http://dev.w3.org/csswg/css-device-adapt/
+[14] http://andydavies.me/blog/2012/12/29/think-twice-before-using-matchmedia-to-conditionally-load-stylesheets/
+[15] http://msdn.microsoft.com/en-us/library/ie/ms530841(v=vs.85).aspx
+[16] http://reference.sitepoint.com/css/at-page#compatibilitysection
+[17] http://www.w3.org/TR/CSS2/page.html
+[18] http://dev.w3.org/csswg/css3-page/#at-page-rule
+[19] http://docs.webplatform.org/wiki/css/atrules/@page
