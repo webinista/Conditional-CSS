@@ -4,29 +4,27 @@ I. Introduction
 		2. Former member of the Opera Software Developer Relations team
 		3. Now embarking on an entrepreneurial venture (translation: I'm a freelancer for hire)
 		4. Note that it's my last talk for a long time and they should be honored
-	B. About this talk
-		1. Some of this is well-supported and familiar to you.
-		2. Some of this is wildly experimental and supported in one or two browsers
-		3. Take a look at what's now, what's new and what's next.
-	C. What is "Conditional CSS"?
+
+	B. What is "Conditional CSS"?
 		1. A new way of looking at some of the things we already know and use.
 		2. CSS features and DOM APIs that allow us to set the conditions under which a set of CSS rules should be applied.
 		3. Several of the at-rules:
 			a. @media
 			b. @supports
 			c. @viewport[3][4][13]
-			d. @document - Experimental, only in Firefox
-			e. @page if there's time.
+			d. @document - Experimental, only in Firefox, but is kind of neat.
+
 II. @media: a recap
 	A. Been around for ages
 	B. Used to set styles for a particular medium: screen, print, projection, etc.
 	C. Extended with media queries http://dev.w3.org/csswg/css3-mediaqueries/
 		1. Basic syntax
 		2. Simple screen + device-width example
-		3. Orientation example: a. Use with an orientation change event?
-		4. Aspect-ratio and device-aspect-ratio (what's the difference?)	
-		5. Best practices: width breakpoints versus content breakpoints
-		6. CSSOM [8]
+		3. Using @media in your CSS <link> tags
+		4. Orientation example: a. Use with an orientation change event?
+		5. Aspect-ratio and device-aspect-ratio (what's the difference?)	
+		6. Best practices: width breakpoints versus content breakpoints
+		7. CSSOM [8]
 	D. window.matchMedia()
 		1. DOM/CSSOM API for interacting with media queries.
 		2. Can conditionally add behavior based on its result 
@@ -38,9 +36,12 @@ II. @media: a recap
 III. @supports
 		A. @-rule based CSS features
 		B. window.CSS.supports() API
-IV.  @viewport
+
+IV.  @viewport [5]
 		A. Viewport meta tag review
 		B. CSS feature set in IE and Opera
+		C. On using @viewport versus a meta tag.
+		https://developer.mozilla.org/en-US/docs/Mobile/Viewport_meta_tag
 
 IV. Detour into CSS Object Model maybe?: FLESH OUT THIS SECTION?
 
@@ -51,25 +52,18 @@ V. What's next?
 	   	2. https://developer.mozilla.org/en-US/docs/CSS/@document
 		3. Simple example
 		4. More complex example using regexp();
-	C. @regions - WebKit and Adobe
 
 
-[1] http://www.w3.org/TR/2011/WD-css3-regions-20110609/#the-at-region-style-rule
-[2] http://msdn.microsoft.com/en-us/library/ie/ff974080(v=vs.85).aspx
+
 [3] http://msdn.microsoft.com/en-us/library/ie/hh869615(v=vs.85).aspx
 [4] http://docs.webplatform.org/wiki/css/atrules/@viewport
 [5] https://github.com/andreasbovens/understanding-viewport
 [6] http://dev.opera.com/articles/view/an-introduction-to-meta-viewport-and-viewport/
 [7] http://www.nczonline.net/blog/2012/01/19/css-media-queries-in-javascript-part-2/
 [8] http://dev.w3.org/csswg/cssom-view/#the-mediaquerylist-interface	
-[9] http://dev.w3.org/csswg/css3-gcpm/
-[10] http://people.opera.com/howcome/2011/reader/index.html
-[11] http://people.opera.com/cmills/orarticle/
-[12] http:/dev.opera.com/articles/view/opera-reader-a-new-way-to-read-the-web/
 [13] http://dev.w3.org/csswg/css-device-adapt/
 [14] http://andydavies.me/blog/2012/12/29/think-twice-before-using-matchmedia-to-conditionally-load-stylesheets/
-[15] http://msdn.microsoft.com/en-us/library/ie/ms530841(v=vs.85).aspx
-[16] http://reference.sitepoint.com/css/at-page#compatibilitysection
-[17] http://www.w3.org/TR/CSS2/page.html
-[18] http://dev.w3.org/csswg/css3-page/#at-page-rule
-[19] http://docs.webplatform.org/wiki/css/atrules/@page
+
+
+Maybe bring back @page? - Or not. It's not terribly conditional.
+https://github.com/shower/ribbon/commit/78513fc8fa5c60ae90bacd692865c98f74635e2f
