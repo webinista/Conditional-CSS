@@ -86,6 +86,9 @@
 		.slide footer ol li, .slide footer ul li{
 			margin-bottom:0;
 		}
+		.shout.demo{
+			background:#fff;@,e
+		}
 	</style>
 </head>
 <body class="list">
@@ -107,111 +110,57 @@
 		<ul>
 			<li>Former member of the Opera Developer Relations Team</li>
 			<li>Currently a freelance web developer</li>
-			<li>Fan of Minneapolis (but not Minneapolis winters)</li>
+			<li>2012 MinneWebCon speaker and fan of Minneapolis<br>(but not Minneapolis winters)</li>
 		</ul>
+	
 	</div></section>
 
-	<section class="slide shout"><div>
-		<h2>About this talk</h2>
-	</div></section>
-
-	<section class="slide"><div>
-		<h2>About this talk</h2>
-		<ul>
-			<li>Some of this is well-supported, old news and probably quite familiar to you.</li>
-			<li>Some of this is wildly experimental and supported in one or two browsers</li>
-		</ul>
-		<footer>Experimental stuff is still worth mentioning because it could well become our developer future.</footer>
-	</div></section>
 
 	<section class="slide shout"><div>
 		<h2>What is Conditional CSS?</h2>
-		<footer>A new way of thinking about some of the things we already know and use. Parts are also defined by the CSS Conditional Rules Module Level 3.</footer>
 	</div></section>
 
-	<section class="slide"><div>
+	<section class="slide" id="what-is-conditional-css"><div>
 		<h2>What is Conditional CSS?</h2>
 		<p>CSS features and their associated JavaScript APIs that let us apply styles or behaviors when a particular condition is met.</p>
+		<footer>A new way of thinking about some of the things we already know and use. 
+		Defined by the CSS Conditional Rules Module Level 3. 
+		Using broader definition here, to include @viewport which is a separate spec.
+		Some of this is old news. 
+		Some of this is very much experimental.
+		</footer>
 	</div></section>
 			
 	<section class="slide"><div>
-		<h2>Conditional CSS: the <code>@rules</code></h2>
+		<h2>Conditional CSS: a few <code>@rules</code></h2>
 	
 		<ul>
-			<li><code>@page</code></li>
 			<li class="next"><code>@media</code></li>
 			<li class="next"><code>@supports</code></li>
 			<li class="next"><code>@viewport</code></li>
 			<li class="next"><code>@document</code></li>
 		</ul>
-
 		<footer>
-			<p>Includes our old friends, @media and @page, which were part of the CSS Level 2 specification, and newer features and APIs:</p>
+			<p>Includes our old friend @media which is part of the CSS Level 2 specification, and newer features and APIs:</p>
 			<ul>
-				<li>Media queries, Generated Content for Paged Media extend @media.</li>
+				<li>Media queries which extends @media.</li>
 				<li>@supports offers native, CSS-based feature detection</li>
 				<li>@viewport applies styles based on the document's viewport</li>
 				<li>@document applies styles based on the document's URL or URL pattern</li>
 			</ul>
-			<p>Some of these also have JavaScript or DOM APIs, so you can use them with scripting.</p>
+			<p>These also have DOM and CSSOM-based APIs. All of it can be manipulated with scripting.</p>
 		</footer>
 	</div></section>
 
-	<section class="slide" id="at-page-browser-support"><div>
-		<h2><code>@page</code> browser support</h2>
-		<table class="browsercompat">
-		<tr>
-		   <th><img src="pictures/ie.svg" class="logo" alt="Internet Explorer logo">IE</th>
-		   <th><img src="pictures/firefox.svg" class="logo" alt="Internet Explorer logo">Firefox</th>
-		   <th><img src="pictures/chrome.svg" class="logo" alt="Chrome logo">Chrome</th>
-		   <th><img src="pictures/safari.png" class="logo" alt="Safari logo">Safari</th>	
-		   <th><img src="pictures/opera.svg" class="logo" alt="Opera logo">Opera</th>				
-		   <th><img src="pictures/android.svg" class="logo" alt="Android logo">Android</th>
-		   <th><img src="pictures/blackberry.svg" class="logo" alt="BlackBerry logo" style="width: 4em">Blackberry</th>
-		</tr>
-		
-		<tr>
-		   <td class="yes">8</td>
-		   <td class="yes">19*</td>
-		   <td class="yes">4.0</td>
-		   <td class="yes">5</td>	
-		   <td class="yes">6</td>		
-		   <td class="no">-</td>		
-		   <td class="maybe">?</td>
-		</tr>
-	</table>
-	<p class="footnote">*Desktop and mobile. Other browsers feature desktop-only support. (<a href="https://developer.mozilla.org/en-US/docs/CSS/@page">Source</a>)</p>
-	<footer>Even though @page has been around for years, basic implementations have started to land in some of the most popular browsers fairly recently.</div></section>
+<section class="slide shout" id="at-media"><div>
+	<h2>@media</h2>
+</div></section>
 
-
-	<section class="slide tobuild"><div>
-		<h2><code>@page</code>: a recap</h2>
-		<p>Set styles for paged media.</p>	
-		<pre><code>@page{
-  
-}</code></pre>
-		<footer>
-		Pages can be paper, transparencies, or screen-based. Limited in what you can modify or override. 
-			<ul>
-				<li>margins</li>
-				<li>widows and orphans</li>
-				<li>page breaks</li>
-			</ul>
-		</footer>
-	</div></section>
-
-
-		
-	<section class="slide tobuild demo"><div>
-		<h2>Show some demos?</h2>		
-	</div></section>
-
-
-	<section class="slide"><div>
+	<section class="slide" id="at-media-recap"><div>
 		<h2><code>@media</code>: a recap</h2>
 		<p>Set styles for a particular media type.</p>
 		
-		<pre><code>@media print{
+		<pre><code>@media print {
     body { font-size: 10pt }
 }
 @media screen, print {
@@ -270,47 +219,55 @@
 		   <td class="yes">3.5+</td>
 		   <td class="yes">4.0</td>
 		   <td class="yes">3.2*</td>	
-		   <td class="yes">10**</td>		
+		   <td class="yes">9.5**</td>		
 		   <td class="yes">2.1+</td>		
 		   <td class="yes">7.0</td>
 		</tr>
 	</table>
-	<p class="footnote">*Safari had full support in desktop as of version 4.0.<br>**Opera gained full support in desktop as of version 9.5. (<a href="http://caniuse.com/#search=media%20queries">Source: CanIUse.com</a>)</p>
+	<p class="footnote">*Safari had full support in desktop as of version 4.0.<br>**Opera gained full support in mobile in version 10. (<a href="http://caniuse.com/#search=media%20queries">Source: CanIUse.com</a>)</p>
 	</div></section>
 
+	<section class="slide"><div>
+		<h2>Media queries basic syntax</h2>
+		<pre><code>@media [only | not] &lt;media_type&gt; [and] (expression){
+    selector{
+        property: value;
+    }	
+}</code></pre>
+	<footer>* Only or not for this particular media type, or/and an expression.
+	* Expressions consist of the feature you wish to query, and usually a minimum, maximum, or exact value.
+	* Within the media rule are your selectors and property-value pairs.
+	</footer>
+	</div></section> 
+
+
+	<section class="slide"><div>
+		<h2>Media queries syntax example</h2>
+		<pre><code>@media screen and (max-width: 400px){</code>
+    <code>    header{</code>
+        <code>        position:fixed;</code>          
+    <code>    }</code>	
+<code>}</code></pre>
+	</div></section> 
 	
-	<section class="slide demo"><div>
-		<h2>Show awesome stuff</h2>
-		
-		<footer>
-		<p>Worth mentioning that you should use <em>content-based</em> breakpoints for your site rather than <em>device-width based</em> breakpoints.</p>
-		
-		<p>Don't set breakpoints based onparticular device widths where you use known widths for  for "desktop," iPad, Nexus 7, or the iPhone, etc. Set them at the point where your content no longer looks good.</p>
-		
-		<p>Easier to do with new viewport units (<a href="http://www.w3.org/TR/css3-values/">http://www.w3.org/TR/css3-values/</a>), but they're not widely supported by mobile browsers yet. (Source: <a href="http://caniuse.com/viewport-units">http://caniuse.com/viewport-units</a>)</p> 
-	</div></section>
-
-
-
-	<section class="slide shout atrisk"><div>
-		<h2>Generated Content for Paged Media</h2>
-	</div></section>
-
-	<section class="slide tobuild demo atrisk"><div>
-		<h2>Generated Content for Paged Media or GCPM</h2>
-		<p>Combines @media and @page</p>
-		
+	<section class="slide shout demo"><div>
+			<h2><a href="demos/media/simple.html" target="_blank">@media demo</a></h2>		
 	</div></section>
 	
-	<section class="slide tobuild demo atrisk"><div>
-		<h2>Show some GCPM demos</h2>
-		
-		<footer>As cool as it is, Generated Content for Paged Media is only available in an old Presto-based Opera build. Download for <a href="http://snapshot.opera.com/labs/camera-and-pages/Opera-Labs-Camera-and-Pages-12.00-1113.exe">Windows</a>, <a href="http://snapshot.opera.com/labs/camera-and-pages/Opera-Labs-Camera-and-Pages-12.00-1113.dmg">Mac</a>, <a href="http://snapshot.opera.com/labs/camera-and-pages/Linux-FreeBSD/">Linux</a> and <a href="http://www.opera.com/download/get.pl?sub=++++&id=34184&location=360&nothanks=yes">Android</a>.</footer>
-	</div></section>
+	<section class="slide"><div>
+		<h2>Media queries syntax examples</h2>
+		<ul>
+			<li><code>@media not print</code></li>
+			<li><code>@media only print</code></li>
+			<li><code>@media (min-width:400px) and (device-aspect-ratio: 16/9)</code></li>
+			<li><code>@media screen and (min-width:400px), <br>print and (max-width: 8.5in)</code></li>
+		</ul>
+	</div></section> 
+	
+	
+	
 
-
-
-	<section class="slide shout detour atrisk"><div>
+	<!-- <section class="slide shout detour atrisk"><div>
 		<h2>CSS Object Model<br>(CSSOM)</h2>
 	</div></section>
 
@@ -319,7 +276,7 @@
 		<h2>Quick overview of CSSOM</h2>
 		<code>document.styleSheets</code>
 		<p>Style sheets included via &lt;link&gt; or an embedded &lt;style&gt; element.</p>
-	</div></section>
+	</div></section> -->
 
 	<section class="slide shout"><div>
 		<h2>matchMedia()</h2>
@@ -348,13 +305,13 @@
 		   <td class="yes">10</td>
 		</tr>
 	</table>
-	<p class="footnote">*Available in Chrome for Android as of version 25 and Firefox for Android as of versio 19. (<a href="http://caniuse.com/#search=matchmedia">Source: CanIUse.com</a>).</p>
+	<p class="footnote">*Available in Chrome for Android as of version 25 and Firefox for Android as of version 19. (<a href="http://caniuse.com/#search=matchmedia">Source: CanIUse.com</a>).</p>
 	<footer>Support pretty well parallels support for media queries in most recent browser versions.</footer>
 	</div></section>
 	
 	<section class="slide tobuild"><div>
 		<h2>window.matchMedia()</h2>
-		<p>A CSSOM / DOM API for interacting with media queries</p>
+		<p>A <abbr title="Document Object Model">DOM</abbr> API for interacting with media queries.</p>
 	</div></section>
 
 
@@ -387,13 +344,13 @@
 		</tr>
 	</table>
 	<p class="footnote">(<a href="http://caniuse.com/#search=supports">Source: CanIUse.com</a>).</p>
-	<footer>WebKit has support</a> available in the codebase, but it has not made its way into a Safari, Chrome, Chromium release. See: http://trac.webkit.org/changeset/142739</footer>
+	<footer>WebKit has support</a> available in the codebase, but it has not made its way into a Safari, Chrome, Chromium release. See: http://trac.webkit.org/changeset/142739 and https://bugs.webkit.org/show_bug.cgi?id=104795</footer>
 	</div></section>
 
 
 	<section class="slide"><div>
 		<h2>@supports</h2>
-		<p>Applies CSS only when the property is supported <em>and</em> the value is valid.</p>
+		<p>Applies CSS only when the property is supported <em>and</em> the value is valid and supported.</p>
 <pre><code>@supports &lt;not&gt;( property: value-to-test ){
 	/* CSS rules to apply */
 }</code></pre>
@@ -417,6 +374,24 @@
 	<section class="slide shout"><div>
 		<h2>@viewport</h2>
 	</div></section>
+
+	<section class="slide detour"><div>
+		<h2><code>&lt;meta name="viewport"&gt;</code></h2>
+		<ul>
+			<li>First introduced in iOS Safari</li>
+			<li>Allowed developers to constrain the dimensions of a page to a particular size</li>
+			<li>Divorces the document viewport from the physical viewport</li>	
+		</ul>
+	</div></section>
+	
+	<section class="slide detour"><div>
+		<h2><code>@viewport</code></h2>
+		<ul>
+			<li>Introduced by Opera as <a href="http://dev.w3.org/csswg/css-device-adapt/">CSS Device Adaptation</a></li>
+			<li>Moves viewport information from the HTML document to CSS.</li>
+		</ul>
+	</div></section>
+
 
 	<section class="slide" id="at-viewport-browser-support"><div>
 		<h2><code>@viewport</code> browser support</h2>
@@ -500,15 +475,6 @@
 			<li>https://bugs.webkit.org/show_bug.cgi?id=87403</li>
 			<li>http://www.stucox.com/blog/the-good-and-bad-of-level-4-media-queries/</li>
 		</ul>
-	</div></section>
-
-
-	<section class="slide tobuild atrisk"><div>
-		<h2>@regions</h2>
-		<ul>
-			<li>http://dev.w3.org/csswg/css3-regions/</li>
-		</ul>
-	
 	</div></section>
 
 	<section class="slide"><div>
