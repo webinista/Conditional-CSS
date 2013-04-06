@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<title>Using media queries with the &lt;video&gt; element</title>
+	<link rel="stylesheet" href="../../css/s.css" media="screen">
+	<style>
+		video{
+			width: 100%;
+			background:#222;
+			margin: 2rem auto
+		}
+		
+		p,ul{margin:0;}
+	</style>
+</head>	
+<body>
+
+<main>
+	<h1>Using media queries with the <code>&lt;video&gt;</code> element</h1>
+	<p>Resize the window, then <a href="./video.html">reload</a> the page (refreshing isn't enough for some browsers). Notice that the value of <var>video.currentSrc</var> changes</p>
+	<ul>
+		<li>Current window width: <samp id="curwidth"></samp></li>
+		<li>Current video source: <samp id="cursrc"></samp></li>
+	</ul>
+	
+	<video controls muted autoplay preload="metadata" poster="../../images/big_buck_bunny_poster_big.jpg">
+		<source src="../../images/big_buck_bunny_trailer_480p.mp4"  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' media="(max-width:719px)">
+		<source src="../../images/big_buck_bunny_trailer_480p.webm" type='video/webm; codecs="vp8, vorbis"' media="(max-width:719px)">
+		<source src="../../images/big_buck_bunny_trailer_480p.ogv"  type='video/ogg; codecs="theora, vorbis"'  media="(max-width:719px)">
+
+		<source src="../../images/big_buck_bunny_trailer_720p.mp4"  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'  media="(min-width:720px) and (max-width:1080px)">
+		<source src="../../images/big_buck_bunny_trailer_720p.webm" type='video/webm; codecs="vp8, vorbis"' media="(min-width:720px) and (max-width:1080px)">
+		<source src="../../images/big_buck_bunny_trailer_720p.ogv"  type='video/ogg; codecs="theora, vorbis"' media="(min-width:720px) and (max-width:1080px)">
+		
+		<source src="../../images/big_buck_bunny_trailer_1080p.mp4"  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' media="(min-width:1081px)">
+		<source src="../../images/big_buck_bunny_trailer_1080p.webm" type='video/webm; codecs="vp8, vorbis"' media="(min-width:1081px)">		
+		<source src="../../images/big_buck_bunny_trailer_1080p.ogv"  type='video/ogg; codecs="theora, vorbis"' media="(min-width:1081px)">
+	</video>
+	
+	<footer>
+		<p>Part of <a href="http://webinista.github.io/Conditional-CSS/">Conditional CSS</a><br>a talk by <a href="http://tiffanybbrown.com/">Tiffany B. Brown</a> at <a href="http://minnewebcon.org/">MinneWebCon</a> 2013.</p>
+	</footer>
+</main>
+
+
+<script src="../../js/js.js"></script>
+<script>
+(function(){
+	var v = document.getElementsByTagName('video')[0], 
+    samps = document.getElementsByTagName('samp'),
+  	showWinWidth = function(e){
+  		var cw = window.innerWidth;
+  		Util.updateText(samps[0], document.createTextNode( (+cw) ), samps[0].firstChild );
+  	},   
+    showCurSrc = function(e){
+		var cs = v.currentSrc, file = cs.split('/');	
+		Util.updateText(samps[1], document.createTextNode( file[ file.length-1 ] ), samps[1].firstChild );
+	},
+	playVid = function(e){
+		v.play();
+	}, 
+
+	/* Chrome and Safari fire these events inconsistently when using <source> */
+	videoevents = ['loadeddata','loadedmetadata','canplay','canplaythrough','playing','play'];
+
+	videoevents.map(function(o){
+		v.addEventListener(o, showCurSrc, false);
+	});
+
+	window.addEventListener('DOMContentLoaded', playVid, false);
+	window.addEventListener('DOMContentLoaded', showWinWidth, false);
+	window.addEventListener('resize', showWinWidth, false);
+})();
+
+</script>
+</body>
+</html>
+

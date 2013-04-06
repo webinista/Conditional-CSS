@@ -22,10 +22,18 @@ p{
 footer{
 	font-size: .7rem;
 	color: #666;
-	font-size: 2ex;	
+	line-height: 1.5;	
 }
+
 
 footer a:link{color:#444;}
 footer a:visited{color:#333;}
 
 var{font-family: monospace; font-style:normal}
+
+figcaption{
+	width: inherit;
+	font-style:italic;
+	color:#333;
+	font-size:.9rem;
+}

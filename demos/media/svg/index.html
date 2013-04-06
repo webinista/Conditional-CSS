@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,user-scalable=yes">
+	<title>@media queries in SVG</title>
+	<link rel="stylesheet" href="../../css/s.css" media="screen">
+	<style media="screen" type="text/css">
+		figure{
+			float:left;
+			margin:0 1rem 0 0;
+			width:525px;
+		}
+	
+		form{
+			clear:both;
+			width:100%;
+			margin: 1rem auto;
+		}
+		input[type=range]#imgwidth{
+			width: 50%;
+		}	
+		
+		header,footer{
+			width: 90%;
+			margin:auto;
+			clear:both;
+		}
+		#wrapper{
+			width:90%;
+			margin:auto;
+			float:none;
+			clear:both;
+		}
+		footer{
+			padding-top: 3rem;
+		}
+		.imgwrap{
+			min-height: 525px;
+		}
+		.txt{
+			font:inherit;
+			border: 2px inset #ccc;
+			padding:.2rem;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>@media queries in SVG</h1>
+	</header>
+
+
+	<main>
+		<div id="wrapper">
+		<form action="#" method="get" id="f">
+			<p>Adjust the value to <label for="imgwidth">change the width</label> of the images below.<br>
+			<input type="range" id="imgwidth" min="50" max="525" value="525" step="25">
+			</p>
+			<p><code>&lt;img width="</code><var></var><code>"&gt;</code></p>
+		</form>
+		<figure class="imgwrap" id="mq">
+			<img src="../../images/circlet_mq.svg" alt="Encircled T with Media Queries">
+			<figcaption>Media queries in SVG.</figcaption>
+		</figure>
+		
+		<figure class="imgwrap">
+			<img src="../../images/circlet.svg" alt="Encircled T without Media Queries">
+			<figcaption>No media queries.</figcaption>
+		</figure>
+
+		<footer>
+		<p>Part of <a href="http://webinista.github.io/Conditional-CSS/">Conditional CSS</a><br>a talk by <a href="http://tiffanybbrown.com/">Tiffany B. Brown</a> at <a href="http://minnewebcon.org/">MinneWebCon</a> 2013.</p>
+		</footer>
+		</div>
+	</main>
+
+
+<script type="application/javascript" src="../../js/js.js"></script>
+
+<script type="application/javascript">
+(function(){
+	var v = document.querySelector('var'),
+		f = document.forms[0];
+		oninput = function(e){
+			Array.prototype.map.call(document.images,function(o){
+				o.width = +e.target.value;
+			});
+			updateWidth(e.target.value);
+
+		},
+		updateWidth = function(width){
+			var w = document.createTextNode( width );
+			Util.updateText(v,w,v.firstChild);
+			console.log( width );
+		}	
+	
+	if( document.getElementById('imgwidth').type == 'text' ){
+		document.getElementById('imgwidth').setAttribute('class','txt');
+	}
+	f.addEventListener('input', oninput, false);
+	f.addEventListener('submit', function(e){ e.preventDefault(); }, false);
+	
+	window.addEventListener('DOMContentLoaded',function(e){
+		updateWidth( +document.images[0].width );
+	
+	},false);
+
+})();
+
+
+</script>
+</body>
+</html>
+

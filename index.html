@@ -86,15 +86,8 @@
 		.slide footer ol li, .slide footer ul li{
 			margin-bottom:0;
 		}
-		.shout.demo{
-			background:#fff;
-		}
-		.slide.demo a{
-			line-height: 1.5;
-			border-bottom-style: dotted;
-			border-bottom-color: #ccc; 
-		}
-		.textright{text-align:right;}
+		
+		.demolink{text-align:right;}
 	</style>
 </head>
 <body class="list">
@@ -246,7 +239,7 @@
         <code>        position:fixed;</code>          
     <code>    }</code>	
 <code>}</code></pre>
-	<p class="textright"><a href="demos/media/simple.html" target="_blank">@media demo</a></p>
+	<p class="demolink"><a href="demos/media/simple.html" target="_blank">@media demo</a></p>
 	</div></section> 
 		
 	<section class="slide"><div>
@@ -264,14 +257,24 @@
 		<h2>Media queries in markup</h2>
 		<pre><code>&lt;link media="(device-width:480px)" rel="stylesheet"&#8230; &gt;</code></pre>
 		<pre><code>&lt;video src="movie.webm" media="(min-width:480px)"&gt;</code></pre>
-		<p class="textright"><a href="demos/media/video.html" target="_blank">demo</a></p>
+		<p class="demolink"><a href="demos/media/video.html" target="_blank">With video demo</a></p>
 	</div></section> 
 	
 	
 	
-	<section class="slide tobuild"><div>
+	<section class="slide"><div>
 		<h2>Media queries in SVG</h2>
-		
+		<ul>
+			<li>Based on the width of the SVG viewport</li>
+			<li>Can refine, show, or hide SVG details as the image is scaled</li>
+			<li>Allows for reusable, resizable elements</li>
+		</ul>
+		<p class="demolink"><a href="demos/media/svg/" target="_blank">In SVG demo</a></p>
+			
+		<footer>
+			Andreas Bovens, of Opera Software has a video how-to and some great demos of how this is used.
+			<a href="http://my.opera.com/ODIN/blog/2009/10/12/how-media-queries-allow-you-to-optimize-svg-icons-for-several-sizes">http://my.opera.com/ODIN/blog/2009/10/12/how-media-queries-allow-you-to-optimize-svg-icons-for-several-sizes</a>
+		</footer>
 	</div></section> 
 	
 	<section class="slide shout" id="matchmedia"><div>

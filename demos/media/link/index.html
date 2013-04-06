@@ -3,8 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,user-scalable=yes">
-	<title>@media queries demos</title>
-	<link rel="stylesheet" href="../css/s.css" media="all">
+	<title>Using a media query in a &lt;link&gt; element</title>
+	<link rel="stylesheet" href="../../css/s.css" media="screen">
 	<style type="text/css">
 	body{
 		background-color: #fff;
@@ -44,17 +44,15 @@
 		
 	</article>
 
-<footer></footer>
+	<footer>
+		<p>Part of <a href="http://webinista.github.io/Conditional-CSS/">Conditional CSS</a><br>a talk by <a href="http://tiffanybbrown.com/">Tiffany B. Brown</a> at <a href="http://minnewebcon.org/">MinneWebCon</a> 2013.</p>
+	</footer>
 <script>
 (function(win){
-	win.addEventListener('DOMContentLoaded',function(e){
-		document.body.classList.remove('unloaded');
-	},false)
-	
-	var wdt = document.getElementById('width');
-	
-	win.addEventListener('resize', function(e){
-		var txt = document.createTextNode( e.target.outerWidth );
+
+	var wdt = document.getElementById('width'),
+	getwidth = function(){
+		var txt = document.createTextNode( window.outerWidth );
 		
 		if( wdt.firstChild ){
 			wdt.replaceChild( txt, wdt.firstChild );
@@ -62,7 +60,14 @@
 			wdt.appendChild( txt );
 		}
 	
-	},false);
+	}
+	
+	win.addEventListener('DOMContentLoaded',function(e){
+		document.body.classList.remove('unloaded');
+		getwidth();
+	},false)
+	
+	win.addEventListener('resize', getwidth,false);
 
 })(window)
 
