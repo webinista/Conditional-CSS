@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,user-scalable=yes">
+	<title>@media queries demos</title>
+	<link rel="stylesheet" href="../css/s.css" media="all">
+	<style type="text/css">
+	body{
+		background-color: #fff;
+	}
+	body:not(.unloaded){
+		transition: all 500ms linear;
+	}
+	header{
+		position: fixed;
+		background:#eee;
+		font-size: 1em;
+		top:0;
+		left:0;
+		width: 100%;
+		padding: 0 .5em;
+		line-height: 1;
+	}
+	</style>
+	<link rel="stylesheet" href="./css/med.css" media="(min-width:600px)">
+</head>
+<body>
+	<header>
+		<p><b>Current window width:</b> <code id="width"> </code> <code>px</code>
+	</header>
+
+	<article>
+		<h1>Using a media query in a <code>&lt;link&gt;</code></h1>
+		<p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eros mauris, venenatis quis auctor mattis, suscipit non sem. Fusce in viverra odio. Proin auctor mattis suscipit. Donec bibendum scelerisque ipsum, non feugiat nunc lobortis elementum. In ultricies augue placerat libero pretium dapibus. Donec dui turpis, dapibus eu aliquam ut, consequat a dui. Vestibulum dapibus tempus sem vitae suscipit. Quisque tempus sem porta turpis sodales eu fermentum massa porttitor. Curabitur sit amet nisl erat, id hendrerit urna. Aenean velit felis, imperdiet eget tincidunt scelerisque, sodales eu est. Proin pellentesque, massa vel vulputate malesuada, nulla diam consectetur odio, id malesuada lorem odio sit amet augue. Ut libero purus, interdum sed bibendum a, ornare eu metus. Proin massa diam, congue non sollicitudin sed, ullamcorper in risus. In tempor, turpis elementum varius elementum, ipsum est pharetra leo, et pellentesque ligula enim id neque. Quisque enim lorem, ultricies convallis euismod ac, elementum eget nisl.
+		</p>
+		<p>
+		Nunc blandit lacus vel erat fermentum vitae pulvinar dolor vestibulum. Aliquam fringilla risus vel mi lacinia ut dignissim arcu tincidunt. Phasellus at risus nec nisi blandit laoreet. Donec facilisis urna vel eros malesuada ut facilisis magna consequat. Maecenas scelerisque, purus nec dignissim vulputate, ligula magna malesuada nunc, in tempor risus sem non nisl. Nullam quis velit at mauris ultricies vulputate a et dui. Donec non justo augue. Phasellus sit amet risus lectus, vel suscipit erat. Donec tellus elit, adipiscing quis dapibus sed, venenatis sed mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+		</p>
+		<p>
+		Donec nunc lacus, fringilla et dictum eu, euismod et massa. Suspendisse sagittis laoreet neque, nec tincidunt justo tincidunt et. Mauris blandit tempor nisi, id sollicitudin massa commodo in. Curabitur vehicula aliquet ullamcorper. Vivamus quis risus magna. Praesent eget mi ac urna sagittis iaculis. Donec sit amet enim quis tortor mattis interdum. Maecenas facilisis egestas lacus, ut eleifend libero mattis et. Ut dignissim rutrum lorem vel rhoncus. Donec malesuada, massa vel molestie feugiat, nunc odio ultrices risus, eu pretium metus mauris a est. Praesent posuere, enim ac convallis venenatis, mi dolor sodales sem, condimentum porta velit erat dapibus eros. Maecenas egestas viverra tortor auctor accumsan. Curabitur eget lectus et massa dictum consectetur vel eu nulla. Curabitur tempor leo ut erat dictum varius.
+		</p>
+		
+	</article>
+
+<footer></footer>
+<script>
+(function(win){
+	win.addEventListener('DOMContentLoaded',function(e){
+		document.body.classList.remove('unloaded');
+	},false)
+	
+	var wdt = document.getElementById('width');
+	
+	win.addEventListener('resize', function(e){
+		var txt = document.createTextNode( e.target.outerWidth );
+		
+		if( wdt.firstChild ){
+			wdt.replaceChild( txt, wdt.firstChild );
+		} else {
+			wdt.appendChild( txt );
+		}
+	
+	},false);
+
+})(window)
+
+</script>
+</body>
+</html>
+

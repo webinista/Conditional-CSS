@@ -1,0 +1,6 @@
+Header unset ETag
+FileETag None
+
+AddType video/webm .webm
+AddType video/ogg  .ogg .ogv
+AddType video/mp4  .mp4

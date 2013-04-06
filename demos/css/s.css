@@ -1,0 +1,31 @@
+html{
+	font: normal 18px / 3ex helvetica,arial,sans-serif;
+}
+header, article, footer{
+	width: 40rem;
+	margin:auto;
+}
+article{
+	padding-bottom: 3rem;
+}
+
+h1{
+	font-family: inherit;
+	font-size: 2rem;
+	line-height:2ex;
+}
+
+p{
+	margin: 1.5rem 0;
+}
+
+footer{
+	font-size: .7rem;
+	color: #666;
+	font-size: 2ex;	
+}
+
+footer a:link{color:#444;}
+footer a:visited{color:#333;}
+
+var{font-family: monospace; font-style:normal}

@@ -12,19 +12,16 @@ I. Introduction
 			a. @media
 			b. @supports
 			c. @viewport[3][4][13]
-			d. @document - Experimental, only in Firefox, but is kind of neat.
 
 II. @media: a recap
 	A. Been around for ages
 	B. Used to set styles for a particular medium: screen, print, projection, etc.
 	C. Extended with media queries http://dev.w3.org/csswg/css3-mediaqueries/
-		1. Basic syntax
-		2. Simple screen + device-width example
-		3. Using @media in your CSS <link> tags
-		4. Orientation example: a. Use with an orientation change event?
-		5. Aspect-ratio and device-aspect-ratio (what's the difference?)	
-		6. Best practices: width breakpoints versus content breakpoints
-		7. CSSOM [8]
+		1. Basic syntax - DONE
+		2. Simple screen + device-width example - DONE
+		3. Using @media in your CSS <link> tags - DONE
+		4. Using @media with video - DONE
+		5. Best practices: width breakpoints versus content breakpoints - CANDIDATE FOR DELETION
 	D. window.matchMedia()
 		1. DOM/CSSOM API for interacting with media queries.
 		2. Can conditionally add behavior based on its result 
@@ -33,6 +30,8 @@ II. @media: a recap
 			b. YUI Gallery Module https://github.com/nzakas/yui3-gallery/tree/master/src/gallery-media
 		4. Browser bugs[7]
 		5. What about to conditionally load style sheets? [14]
+		6. CSSOM [8]
+		7. Orientation example: a. Use with an orientation change event?
 III. @supports
 		A. @-rule based CSS features
 		B. window.CSS.supports() API
@@ -47,11 +46,14 @@ IV. Detour into CSS Object Model maybe?: FLESH OUT THIS SECTION?
 
 V. What's next?
 	A. Fancier media queries: Look at Stu Cox' post roundup + include Mozilla and WebKit bugs
+		1. http://dev.w3.org/csswg/mediaqueries4/
+		2. http://www.stucox.com/blog/the-good-and-bad-of-level-4-media-queries/
 	B. @document, which is currently implemented in Firefox only.
 	   	1. Was part of the Conditional CSS Rules spec, level 3 but moved to Level 4 
 	   	2. https://developer.mozilla.org/en-US/docs/CSS/@document
 		3. Simple example
 		4. More complex example using regexp();
+		
 
 
 
@@ -63,6 +65,8 @@ V. What's next?
 [8] http://dev.w3.org/csswg/cssom-view/#the-mediaquerylist-interface	
 [13] http://dev.w3.org/csswg/css-device-adapt/
 [14] http://andydavies.me/blog/2012/12/29/think-twice-before-using-matchmedia-to-conditionally-load-stylesheets/
+
+http://www.w3.org/TR/css3-values/
 
 
 Maybe bring back @page? - Or not. It's not terribly conditional.

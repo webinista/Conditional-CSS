@@ -65,7 +65,7 @@
 			background:#ffc;
 		}
 		.yes{color:#0c0;}
-		.no{color: #c00;}
+		.no,.emphasize{color: #c00;}
 		.sorta{color: #fc0;}
 		.maybe{color:#f60;}
 		.logo{width:3em;height:3em;display:block;margin:0 auto}
@@ -87,14 +87,20 @@
 			margin-bottom:0;
 		}
 		.shout.demo{
-			background:#fff;@,e
+			background:#fff;
 		}
+		.slide.demo a{
+			line-height: 1.5;
+			border-bottom-style: dotted;
+			border-bottom-color: #ccc; 
+		}
+		.textright{text-align:right;}
 	</style>
 </head>
 <body class="list">
 	<header class="caption">
 		<h1>Conditional CSS</h1>
-		<p><a href="http://tiffanybbrown.com/">Tiffany B. Brown</a>, Freelance Web Developer</p>
+		<p><a href="http://tiffanybbrown.com/">Tiffany B. Brown</a>, Webinista, Inc.</p>
 	</header>
 	<section class="slide cover" id="Cover"><div>
 		<h2>Conditional CSS</h2>
@@ -125,9 +131,7 @@
 		<p>CSS features and their associated JavaScript APIs that let us apply styles or behaviors when a particular condition is met.</p>
 		<footer>A new way of thinking about some of the things we already know and use. 
 		Defined by the CSS Conditional Rules Module Level 3. 
-		Using broader definition here, to include @viewport which is a separate spec.
-		Some of this is old news. 
-		Some of this is very much experimental.
+		Using broader definition here and covering features that aren't a part of that spec. 
 		</footer>
 	</div></section>
 			
@@ -138,15 +142,13 @@
 			<li class="next"><code>@media</code></li>
 			<li class="next"><code>@supports</code></li>
 			<li class="next"><code>@viewport</code></li>
-			<li class="next"><code>@document</code></li>
 		</ul>
 		<footer>
 			<p>Includes our old friend @media which is part of the CSS Level 2 specification, and newer features and APIs:</p>
 			<ul>
 				<li>Media queries which extends @media.</li>
-				<li>@supports offers native, CSS-based feature detection</li>
-				<li>@viewport applies styles based on the document's viewport</li>
-				<li>@document applies styles based on the document's URL or URL pattern</li>
+				<li>@supports offers native feature detection for CSS properties</li>
+				<li>@viewport applies styles based on the properties of a document's viewport</li>
 			</ul>
 			<p>These also have DOM and CSSOM-based APIs. All of it can be manipulated with scripting.</p>
 		</footer>
@@ -168,11 +170,7 @@
 }</code></pre>
 	</div></section>
 	
-	<section class="slide shout"><div>
-		<h2>Media queries</h2>
-	</div></section>
-	
-	<section class="slide"><div>
+	<section class="slide" id="media-queries"><div>
 		<h2><code>@media</code> and media queries</h2>
 		<p>Applies styles for particular media features.</p>
 		<div class="threecol">
@@ -197,8 +195,9 @@
 			<li>scan</li>
 			<li>grid</li>
 		</ul>
-
 		</div>
+		<footer>* Most of these features can be further qualified with a min- or max- prefix, 
+		for example: min-device-width, and max-height.
 	</div></section>
 
 	<section class="slide" id="media-queries-browser-support"><div>
@@ -226,7 +225,6 @@
 	</table>
 	<p class="footnote">*Safari had full support in desktop as of version 4.0.<br>**Opera gained full support in mobile in version 10. (<a href="http://caniuse.com/#search=media%20queries">Source: CanIUse.com</a>)</p>
 	</div></section>
-
 	<section class="slide"><div>
 		<h2>Media queries basic syntax</h2>
 		<pre><code>@media [only | not] &lt;media_type&gt; [and] (expression){
@@ -248,41 +246,84 @@
         <code>        position:fixed;</code>          
     <code>    }</code>	
 <code>}</code></pre>
+	<p class="textright"><a href="demos/media/simple.html" target="_blank">@media demo</a></p>
 	</div></section> 
-	
-	<section class="slide shout demo"><div>
-			<h2><a href="demos/media/simple.html" target="_blank">@media demo</a></h2>		
-	</div></section>
-	
+		
 	<section class="slide"><div>
 		<h2>Media queries syntax examples</h2>
 		<ul>
-			<li><code>@media not print</code></li>
 			<li><code>@media only print</code></li>
+			<li><code>@media not (orientation: portrait)</code></li>
 			<li><code>@media (min-width:400px) and (device-aspect-ratio: 16/9)</code></li>
 			<li><code>@media screen and (min-width:400px), <br>print and (max-width: 8.5in)</code></li>
 		</ul>
 	</div></section> 
 	
 	
+	<section class="slide"><div>
+		<h2>Media queries in markup</h2>
+		<pre><code>&lt;link media="(device-width:480px)" rel="stylesheet"&#8230; &gt;</code></pre>
+		<pre><code>&lt;video src="movie.webm" media="(min-width:480px)"&gt;</code></pre>
+		<p class="textright"><a href="demos/media/video.html" target="_blank">demo</a></p>
+	</div></section> 
 	
-
-	<!-- <section class="slide shout detour atrisk"><div>
-		<h2>CSS Object Model<br>(CSSOM)</h2>
-	</div></section>
-
-
-	<section class="slide tobuild atrisk"><div>
-		<h2>Quick overview of CSSOM</h2>
-		<code>document.styleSheets</code>
-		<p>Style sheets included via &lt;link&gt; or an embedded &lt;style&gt; element.</p>
-	</div></section> -->
-
-	<section class="slide shout"><div>
+	
+	
+	<section class="slide tobuild"><div>
+		<h2>Media queries in SVG</h2>
+		
+	</div></section> 
+	
+	<section class="slide shout" id="matchmedia"><div>
 		<h2>matchMedia()</h2>
 	</div></section>
+	
+	<section class="slide"><div>
+		<h2><code>window.matchMedia()</code> API</h2>
+		<ul>
+			<li>An API for interacting with media queries.</li>
+			<li>Defined in the <a href="http://dev.w3.org/csswg/cssom-view/#the-mediaquerylist-interface">CSSOM View specification</a></li>
+		</ul>
+	</div></section>
 
-		<section class="slide" id="match-media-browser-support"><div>
+	<section class="slide"><div>
+		<h2><code>matchMedia()</code> syntax</h2>
+		<p>Argument must be a valid <code>@media</code> rule.</p>
+		<ul>
+			<li><code>matchMedia("screen and (min-width:400px)");</code></li>
+			<li><code>matchMedia("(orientation: landscape)");</code></li>
+		</ul>
+		<p>Returns a <code>MediaQueryList</code> object.</p>
+		<footer>This is a really good way to check the validity of your media queries before adding them to your CSS.</footer>
+	</div></section>
+
+	<section class="slide" id="mediaquerylist"><div>
+		<h2>MediaQueryList interface</h2>
+		<ul>
+			<li><code>media</code>: returns list of queries or <code>invalid</code> if the argument isn't valid.</li>
+			<li><code>matches</code>: returns <code>true</code> if the state of the rendered document matches the media query, <code>false</code> otherwise</li>
+			<li><code>addListener()</code>: Adds a media query listener.</li>
+			<li><code>removeListener()</code>:  Removes the media query listener.</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>MediaQueryList example</h2>
+		<pre><code>function mqHandler(mq){</code>
+<code>    if( mq.matches ){</code>
+<code>        // do something</code>
+<code>    }</code>
+<code>}</code>
+<code>var mq = matchMedia("(orientation:landscape)");</code>
+<code>mq.addListener( mqHandler );</code>		
+</pre>
+	</div></section>
+
+	<section class="slide shout demo"><div>
+		<h2><a href="demos/matchmedia/">matchMedia() demo</a></h2>
+	</div></section>
+
+	<section class="slide" id="match-media-browser-support"><div>
 		<h2><code>matchMedia()</code> browser support</h2>
 		<table class="browsercompat">
 		<tr>
@@ -308,17 +349,100 @@
 	<p class="footnote">*Available in Chrome for Android as of version 25 and Firefox for Android as of version 19. (<a href="http://caniuse.com/#search=matchmedia">Source: CanIUse.com</a>).</p>
 	<footer>Support pretty well parallels support for media queries in most recent browser versions.</footer>
 	</div></section>
-	
-	<section class="slide tobuild"><div>
-		<h2>window.matchMedia()</h2>
-		<p>A <abbr title="Document Object Model">DOM</abbr> API for interacting with media queries.</p>
+
+	<section class="slide shout" id="supports"><div>
+		<h2>@supports</h2>
+		<footer>
+		*Feature detection for CSS. 
+		*Outlined by the CSS Conditional Rules Module Level 3 specification
+		*Suggested by Paul Irish, one of the authors of Modernizr.
+		*Spec is authored by a Mozilla employee.
+		*Opera 12.1 was the first browser to fully support.
+		</footer>
 	</div></section>
 
+
+	<section class="slide" id="supports-syntax"><div>
+		<h2><code>@supports</code> syntax</h2>
+<pre><code>@supports &lt;not&gt;( property: value-to-test ){
+	/* CSS rules to apply */
+}</code></pre>
+	<footer>Applies styles when the condition isn't met. Can use to include fallbacks for cases where a browser supports at-supports, but not a particular CSS feature.</footer>
+	</div></section>
+	
+	<section class="slide" id="how-at-supports-works"><div>
+	<h2>How <code>@supports</code> works</h2>
+	<ul>
+		<li>Supported without a prefix in browsers that support it.</li>
+		<li class="next">Styles applied only when the property is supported <em>and</em> value is valid <em>and supported</em>.</li>
+		<li class="next">Can set more than one condition using <code>and</code> or <code>or</code>.</li>
+		<li class="next">Can negate a condition using <code>not</code></li>
+		<li class="next">Use parentheses to group <code>and</code>, <code>or</code>, and <code>not</code> conditions.</li>
+	</ul>
+	<footer>Just because a browser reports support doesn't mean support is actually usable, or
+	compliant with the spec. Eric Meyer has a great critique about the limits of CSS.supports().
+	<a href="http://meyerweb.com/eric/thoughts/2013/03/19/unsupportable-promises/">http://meyerweb.com/eric/thoughts/2013/03/19/unsupportable-promises/</a></footer>
+	</div></section>
+	
+	<section class="slide" id="supports-syntax-example"><div>
+		<h2><code>@supports</code> syntax example</h2>
+<pre><code>@supports ( transform: rotate3d(1,1,1,0deg) ){
+	#myobj{
+		transform: rotate3d(1,1,1,15deg);
+	}
+}</code></pre>
+	</div></section>
+	
+	<section class="slide" id="supports-syntax-example-not"><div>
+		<h2><code>@supports</code> example using <code>not</code></h2>
+<pre><code>@supports not ( display: flexbox ){
+	#myobj{
+		float: left;
+		width: 30%;
+	}
+}</code></pre>
+	</div></section>
+	
+	
+	<section class="slide" id="supports-syntax-example-using-and-with-or"><div>
+		<h2><code>@supports</code> using <code>and</code> &amp; <code>or</code></h2>
+<pre><code>@supports ( 
+    ( transform: scale(1) ) or ( -x-transform: scale(1) ) 
+)  and ( 
+    ( transition: transform 500ms linear ) 
+        or ( -x-transition: transform 500ms linear ) 
+)</code></pre>
+<p>(Where <em>-x-</em> is a vendor prefix.)</p>
+
+<footer>Can group vendor-prefixes this way.</footer>
+	</div></section>
 
 
 	<section class="slide shout"><div>
-		<h2>@supports</h2>
+		<h2>CSS.supports()</h2>
 	</div></section>
+
+
+	<section class="slide"><div>
+		<h2><code>window.CSS.supports()</code></h2>
+		<ul>
+			<li>Originally conceived of as <code>window.supportsCSS();</code></li>
+			<li>Now a <code>CSS</code> object attached to the window with a <code>supports()</code> method.</li>
+		</ul>
+		<footer>Presto-based Opera &#8212; Opera 12.1 &#8212; uses supportsCSS()</footer>
+	</div></section>
+	
+	
+	<section class="slide"><div>
+		<h2><code>CSS.supports()</code> syntax</h2>
+		<pre><code>var hasProp = CSS.supports('property','value');</code>
+<code>if( hasProp ){</code>
+<code>    // do something</code>
+<code>}</code></pre>
+	<p>Returns <code>true</code> if the property <em>and value</em> are supported. Returns <code>false</code> otherwise.</p>
+	<footer>supportsCSS() accepts the same parameters in the same order.</div></section>
+	
+	
 
 	<section class="slide" id="at-supports-browser-support"><div>
 		<h2><code>@supports</code> browser support</h2>
@@ -335,7 +459,7 @@
 		
 		<tr>
 		   <td class="no">-</td>
-		   <td class="yes">20+</td>
+		   <td class="yes">20.0a2+*</td>
 		   <td class="no">-</td>
 		   <td class="no">-</td>	
 		   <td class="yes">12.1</td>		
@@ -343,33 +467,23 @@
 		   <td class="no">-</td>
 		</tr>
 	</table>
-	<p class="footnote">(<a href="http://caniuse.com/#search=supports">Source: CanIUse.com</a>).</p>
-	<footer>WebKit has support</a> available in the codebase, but it has not made its way into a Safari, Chrome, Chromium release. See: http://trac.webkit.org/changeset/142739 and https://bugs.webkit.org/show_bug.cgi?id=104795</footer>
+	<p class="footnote">* Firefox support is available in version 17+, but behind a flag. Turned on by default in Firefox 22+ (Aurora and Firefox nightly builds). (<a href="http://caniuse.com/#search=supports">Source: CanIUse.com</a>).</p>
+	<footer>WebKit has support</a> available in the codebase, but it has not made its way into a Safari, Chrome, Chromium release. It is mostly available in Opera 14 beta, however. See: http://trac.webkit.org/changeset/142739 and https://bugs.webkit.org/show_bug.cgi?id=104795</footer>
 	</div></section>
-
-
+	
+	
 	<section class="slide"><div>
-		<h2>@supports</h2>
-		<p>Applies CSS only when the property is supported <em>and</em> the value is valid and supported.</p>
-<pre><code>@supports &lt;not&gt;( property: value-to-test ){
-	/* CSS rules to apply */
-}</code></pre>
-	</div></section>
+		<h2>Testing for <code>@supports</code> support</h2>
+		<ul>
+			<li><code>!!window.CSSRule.SUPPORTS_RULE</code>: tests whether support is available <em>at all</em></li>
+			<li class="next"><code>'CSS' in window</code>: tests whether the API is available as the <code>CSS</code> object.</li>
+			<li class="next"><code>'supportsCSS' in window</code>: tests whether the API is available using <code>supportsCSS()</code> instead</li>
+			<li class="next">Try <a href="https://github.com/webinista/supportsatsupports/blob/master/atsupports.js">atsupports.js</a>, written by yours truly.</li>
+		</ul>
+	<footer>
+	* CSSRule is part of the CSS Object Model. 
+	* An interface that acts as the parent interface for rules such as @viewport, @supports, @import, etc.</footer></div></section>
 
-
-	<section class="slide demo tobuild"><div>
-		<h2>Show awesome @supports stuff</h2>
-	</div></section>
-
-
-	<section class="slide shout"><div>
-		<h2>CSS.supports()</h2>
-	</div></section>
-
-	<section class="slide demo tobuild"><div>
-		<h2>Talk about the API</h2>
-		<p>Maybe brag a little about my own foray into polyfill land.</p>
-	</div></section>
 
 	<section class="slide shout"><div>
 		<h2>@viewport</h2>
@@ -378,17 +492,17 @@
 	<section class="slide detour"><div>
 		<h2><code>&lt;meta name="viewport"&gt;</code></h2>
 		<ul>
-			<li>First introduced in iOS Safari</li>
-			<li>Allowed developers to constrain the dimensions of a page to a particular size</li>
-			<li>Divorces the document viewport from the physical viewport</li>	
+			<li class="next">First introduced in iOS Safari</li>
+			<li class="next">Allows developers to constrain the dimensions of a page to a particular size</li>
+			<li class="next">Divorces the document viewport dimensions from the browser window dimensions</li>	
 		</ul>
 	</div></section>
 	
 	<section class="slide detour"><div>
 		<h2><code>@viewport</code></h2>
 		<ul>
-			<li>Introduced by Opera as <a href="http://dev.w3.org/csswg/css-device-adapt/">CSS Device Adaptation</a></li>
-			<li>Moves viewport information from the HTML document to CSS.</li>
+			<li class="next">Introduced by Opera in the <a href="http://dev.w3.org/csswg/css-device-adapt/">CSS Device Adaptation</a> specification</li>
+			<li class="next">Moves viewport information from the HTML document to CSS.</li>
 		</ul>
 	</div></section>
 
@@ -411,62 +525,31 @@
 		   <td class="no">-</td>
 		   <td class="no">-</td>
 		   <td class="no">-</td>
-		   <td class="yes">11*</td>
+		   <td class="yes">11+*&dagger;</td>
 		   <td class="no">-</td>	
 		   <td class="no">-</td>
 		</tr>
 	</table>
-	<p class="footnote">*Requires a vendor prefix (-ms- or -o-).</p>
-	<footer>Firefox' implementation is still in the works. Webkit implementation is complete, but not yet in a major release.</footer>
+	<p class="footnote">*Requires a vendor prefix (-ms- or -o-). &dagger; Presto-based Opera only.</p>
+	<footer>Firefox' implementation is still in the works. 
+	Webkit implementation is complete, but not yet in a major release. Will require a -webkit- prefix.<a href="http://trac.webkit.org/changeset/133084 ">http://trac.webkit.org/changeset/133084</a>
+	Chromium/Blink is also tracking it. <a href="https://code.google.com/p/chromium/issues/detail?id=155477">https://code.google.com/p/chromium/issues/detail?id=155477</a>
+	Oprium beta doesn't have support yet.
+	</footer>
 	</div></section>
 
+	
+	<section class="slide"><div>
+		<h2>Testing for <code>@viewport</code> support</h2>
+		<pre><code>var hasViewport = !!window.CSSRule.VIEWPORT_RULE;</code></pre>
+		
+	</div></section>
+	
+	
 	<section class="slide shout"><div>
 		<h2>What's next?</h2>
 	</div></section>
 
-	<section class="slide shout"><div>
-		<h2>@document</h2>
-	</div></section>
-
-	<section class="slide" id="at-document-browser-support"><div>
-		<h2><code>@document</code> browser support</h2>
-		<table class="browsercompat">
-		<tr>
-		   <th><img src="pictures/ie.svg" class="logo" alt="Internet Explorer logo">IE</th>
-		   <th><img src="pictures/firefox.svg" class="logo" alt="Internet Explorer logo">Firefox</th>
-		   <th><img src="pictures/chrome.svg" class="logo" alt="Chrome logo">Chrome</th>
-		   <th><img src="pictures/safari.png" class="logo" alt="Safari logo">Safari</th>	
-		   <th><img src="pictures/opera.svg" class="logo" alt="Opera logo">Opera</th>				
-		   <th><img src="pictures/android.svg" class="logo" alt="Android logo">Android</th>
-		   <th><img src="pictures/blackberry.svg" class="logo" alt="BlackBerry logo" style="width: 4em">Blackberry</th>
-		</tr>
-		
-		<tr>
-		   <td class="no">-</td>
-		   <td class="yes">6+*</td>
-		   <td class="no">-</td>
-		   <td class="no">-</td>
-		   <td class="no">-</td>
-		   <td class="no">-</td>-</td>		
-		   <td class="maybe">?</td>
-		</tr>
-	</table>
-	<p class="footnote">*Partial support available in version 1.5 with a <code>-moz-</code> prefix.<br>(<a href="https://developer.mozilla.org/en-US/docs/CSS/@document">Source: Mozilla Developer Network</a>)</p>
-	<footer>Was originally part of the CSS Conditional Rules Module Level 3 (<a href="http://www.w3.org/TR/css3-conditional/">http://www.w3.org/TR/css3-conditional/</a>), but was pushed to Level 4.</div></section>
-	
-	<section class="slide"><div>
-		<h2>@document</h2>
-		<ul>
-			<li>Apply styles based on the document URI: per-domain or per-page.</li>
-			<li class="next">Created with a user style sheets use case in mind.</li>
-		</ul>
-		<footer>Issues to be worked-out for Level 4 involve other use cases.
-		<ul>
-			<li>Might be useful for browser vendors to ship site patches for users. </li>
-			<li>Possibility of using it to organize styles by domain.</li>
-		</ul>
-		</footer>
-	</div></section>
 
 	<section class="slide tobuild"><div>
 		<h2>More awesome media queries (Level 4)</h2>

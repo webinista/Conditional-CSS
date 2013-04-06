@@ -13,51 +13,57 @@
 			background: #c09;
 			color:#fff;
 			margin:0 auto;
-			box-shadow: 0px 0px 10px #fff;
-			height: 5rem;
-			-webkit-transition: height 500ms linear, box-shadow 500ms linear;
-				   -moz-transition: height 500ms linear, box-shadow 500ms linear;
-				    -ms-transition: height 500ms linear, box-shadow 500ms linear;
-				     -o-transition: height 500ms linear, box-shadow 500ms linear;
-				        transition: height 500ms linear, box-shadow 500ms linear;
-
+			box-shadow: 0px 0px 10px #fff;		
+			height: 6rem;
+		
 		}
-		h1{
-			margin:0;
-			padding:.5rem;
-			-webkit-transition: font-size 500ms linear;
-			   -moz-transition: font-size 500ms linear;
-				-ms-transition: font-size 500ms linear;
-				 -o-transition: font-size 500ms linear;
-					transition: font-size 500ms linear;
-	
+		h1,h2{
+			margin: 0;
 		}
 		
-		article{
-			-webkit-transition: font-size 500ms linear, line-height 500ms linear;
-			   -moz-transition: font-size 500ms linear, line-height 500ms linear;
-				-ms-transition: font-size 500ms linear, line-height 500ms linear;
-				 -o-transition: font-size 500ms linear, line-height 500ms linear;
-					transition: font-size 500ms linear, line-height 500ms linear;
-	
+		header h1{
+			margin:0;
+			padding:.5rem;
+			font-size: 2rem;	
 		}
-
+		
+		header h2{
+			font-size: 1.3rem;
+			padding:.5rem;
+		}
+				
+		article h2{
+			padding:1rem 0 0 0;
+			font-size: 2rem;
+			line-height: 1;
+		}
+		
+		article > *{
+			margin: 1.5rem 10px;
+		}
 		@media screen and (max-width: 400px){
+			html,body{
+				font-size: 16px;
+			}
 			header{
 				position:fixed;
 				box-shadow: 0px 0px 10px #000;
 				top:0;
 				left:0;
-				height: 2.5rem;
+				background: #0c0;
+				height: 5rem;
 			}
-			h1{
+			header h1{
 				font-size:1.2rem;
+			}
+			header h2{
+				font-size: 1rem;
 			}
 			article{
 				width: auto;
 				font-size:.8rem;
 				line-height: 2.5ex;
-				margin-top: 4rem;
+				margin-top: 5.5rem;
 			}
 			article > *{
 				margin-left:1rem;
@@ -65,14 +71,12 @@
 			}
 
 		}
-
-
-
 	</style>
 </head>
 <body>
 	<header>
-		<h1>Simple @media example</h1>
+		<h1><code>@media</code> example</h1>
+		<h2>current width: <samp id="curwidth"></samp></h2>
 	</header>
 	
 	<article>
@@ -123,9 +127,30 @@
 	Mauris mattis orci vitae velit sodales porta. Integer viverra sapien non augue suscipit pulvinar. Suspendisse aliquam, nisi a bibendum pulvinar, augue augue suscipit nisl, in consequat libero diam at urna. Cras mattis massa sed mi vulputate elementum. Phasellus eu magna tincidunt urna congue pellentesque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus quis dolor urna. Nunc scelerisque rhoncus augue, at rutrum sapien adipiscing vitae. Suspendisse et porta nisi. Donec id risus nibh.
 	</p>
 	
+	<footer>
+		<p>Part of <a href="http://webinista.github.io/Conditional-CSS/">Conditional CSS</a><br>a talk by <a href="http://tiffanybbrown.com/">Tiffany B. Brown</a> at <a href="http://minnewebcon.org/">MinneWebCon</a> 2013.</p>
+	</footer>
+
 </article>
 
-<footer></footer>
+
+<script type="application/javascript" src="../js/js.js"></script>
+
+<script type="application/javascript">
+(function(){
+	var cw = document.getElementById('curwidth');
+	
+	var onresize = function(e){
+		var w = document.createTextNode( (+window.innerWidth) );
+		Util.updateText(cw,w,cw.firstChild);
+	}
+	
+	window.addEventListener('resize',onresize,false);
+	window.addEventListener('DOMContentLoaded',onresize,false);
+
+})();
+
+
 </script>
 </body>
 </html>
