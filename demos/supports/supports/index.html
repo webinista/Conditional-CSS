@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,user-scalable=yes">
+	<title>@support demonstration</title>
+	<link rel="stylesheet" href="../../css/s.css" media="screen">
+	<style media="screen" type="text/css">
+		@supports (transform: rotateX(45deg) ) {
+			body{
+				background: #eef;
+			}	
+			#dragonfly{
+				perspective: 300px;
+			}
+			img{
+				transform: rotateX(45deg)
+			}	
+		}
+
+		figcaption{
+			opacity:0;
+		}		
+
+	</style>
+</head>
+<body>
+
+<main>
+<h1>Using <code>@supports (transform: rotateX(45deg) ) </code></h1> 
+<figure id="dragonfly">
+	<img src="../../images/dragonfly_lg.jpg" alt="A dragonfly." class="swap">
+ 	<figcaption>A dragonfly rests on a leaf at the Borong Botanical Garden in Borong, Indonesia.</figcaption>
+</figure>
+<footer>
+	<p>Part of <a href="http://webinista.github.io/Conditional-CSS/">Conditional CSS</a><br>a talk by <a href="http://tiffanybbrown.com/">Tiffany B. Brown</a> at <a href="http://minnewebcon.org/">MinneWebCon</a> 2013.</p>
+</footer>
+
+
+</main>
+
+<script type="text/javascript">
+
+</script>
+</body>
+</html>
+

@@ -336,7 +336,6 @@
 <p class="demolink" style="margin-top:-2rem;"><a href="demos/matchmedia/" target="_blank">matchMedia listener demo</a></p>
 </div></section>
 
-
 	<section class="slide" id="match-media-browser-support"><div>
 		<h2><code>matchMedia()</code> browser support</h2>
 		<table class="browsercompat">
@@ -382,13 +381,16 @@
 		<li class="next">Styles applied only when the property is supported <em>and</em> value is valid <em>and supported</em>.</li>
 		<li class="next">Can set more than one condition using <code>and</code> or <code>or</code>.</li>
 		<li class="next">Can negate a condition using <code>not</code></li>
-		<li class="next">Use parentheses to group <code>and</code>, <code>or</code>, and <code>not</code> conditions.</li>
+		<li class="next">Use parentheses to group <code>and</code> and <code>or</code> conditions.</li>
 	</ul>
-	<footer>Just because a browser reports support doesn't mean support is actually usable, or
+	<footer>
+	* Just because a browser reports support doesn't mean support is actually usable, or
 	compliant with the spec. Eric Meyer has a great critique about the limits of CSS.supports().
-	<a href="http://meyerweb.com/eric/thoughts/2013/03/19/unsupportable-promises/">http://meyerweb.com/eric/thoughts/2013/03/19/unsupportable-promises/</a></footer>
+	<a href="http://meyerweb.com/eric/thoughts/2013/03/19/unsupportable-promises/">http://meyerweb.com/eric/thoughts/2013/03/19/unsupportable-promises/</a>
+	* Can't negate one condition and permit another. 
+	* Can, however negate a single condition created using 'and' or 'or'
+	</footer>
 	</div></section>
-
 
 	<section class="slide" id="supports-syntax"><div>
 		<h2><code>@supports</code> syntax</h2>
@@ -401,21 +403,22 @@
 	
 	<section class="slide" id="supports-syntax-example"><div>
 		<h2><code>@supports</code> syntax example</h2>
-<pre><code>@supports ( transform: rotate3d(1,1,1,0deg) ){
+<pre><code>@supports ( transform: rotateX(45deg) ){
 	#myobj{
-		transform: rotate3d(1,1,1,15deg);
+		transform: rotateX(45deg);
 	}
 }</code></pre>
+	<p class="demolink"><a href="demos/supports/supports/" target="_blank">@supports simple demo</a></p>
 	</div></section>
 	
 	<section class="slide" id="supports-syntax-example-not"><div>
 		<h2><code>@supports</code> example using <code>not</code></h2>
-<pre><code>@supports not ( display: flexbox ){
+<pre><code>@supports not ( transform: rotateX(45deg) ){
 	#myobj{
-		float: left;
-		width: 30%;
+		transform: rotate(-45deg) skewX(10deg);
 	}
 }</code></pre>
+	<p class="demolink"><a href="demos/supports/notsupports/" target="_blank">@supports using negation</a></p>
 	</div></section>
 	
 	
@@ -428,8 +431,9 @@
         or ( -x-transition: transform 500ms linear ) 
 )</code></pre>
 <p>(Where <em>-x-</em> is a vendor prefix.)</p>
+	<p class="demolink" style="margin-top:-4em"><a href="demos/supports/andorsupports/" target="_blank">@supports grouping conditions</a></p>
 
-<footer>Can group vendor-prefixes this way.</footer>
+	<footer>Can group vendor-prefixes this way.</footer>
 	</div></section>
 
 
@@ -441,6 +445,7 @@
 	<section class="slide"><div>
 		<h2><code>window.CSS.supports()</code></h2>
 		<ul>
+			<li>The DOM-based API counterpart to <code>@supports</code></code></li>
 			<li>Originally conceived of as <code>window.supportsCSS();</code></li>
 			<li>Now a <code>CSS</code> object attached to the window with a <code>supports()</code> method.</li>
 		</ul>
@@ -460,7 +465,7 @@
 	
 
 	<section class="slide" id="at-supports-browser-support"><div>
-		<h2><code>@supports</code> browser support</h2>
+		<h2><code>@supports</code> &amp; <code>CSS.supports()</code> browser support</h2>
 		<table class="browsercompat">
 		<tr>
 		   <th><img src="pictures/ie.svg" class="logo" alt="Internet Explorer logo">IE</th>
@@ -591,7 +596,6 @@
 		-->
 	<div class="progress"><div></div></div>
 	<script src="shower/shower.min.js"></script>
-	<!-- Copyright © 2010–2013 Vadim Makeev — pepelsbey.net -->
-	<!-- Photos by John Carey — fiftyfootshadows.net -->
+	<!-- Shower Copyright © 2010–2013 Vadim Makeev — pepelsbey.net -->
 </body>
 </html>
