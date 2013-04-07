@@ -37,7 +37,7 @@ figcaption{
 
 /* @supports demo */
 #dragonfly{width: 640px; height: 394px; margin:auto;}
-img{display:block; width:inherit; height:inherit}
+#dragonfly img{display:block; width:inherit; height:inherit}
 
 #warning{
 	background: rgba(255,232,0,.8);
@@ -55,3 +55,11 @@ img{display:block; width:inherit; height:inherit}
 }
 
 #warning b{color: #c00;}	
+
+button{
+	background:#33f;
+	border: 2px outset #33f;
+	color: #fff;
+	font:inherit;
+	vertical-align: bottom;
+}
