@@ -234,19 +234,19 @@
 
 	<section class="slide"><div>
 		<h2>Media queries syntax example</h2>
-		<pre><code>@media screen and (max-width: 400px){</code>
+		<pre><code>@media screen and (max-width: 500px){</code>
     <code>    header{</code>
         <code>        position:fixed;</code>          
     <code>    }</code>	
 <code>}</code></pre>
-	<p class="demolink"><a href="demos/media/simple.html" target="_blank">@media demo</a></p>
+	<p class="demolink"><a href="demos/media/simple/" target="_blank">@media demo</a></p>
 	</div></section> 
 		
 	<section class="slide"><div>
 		<h2>Media queries syntax examples</h2>
 		<ul>
 			<li><code>@media only print</code></li>
-			<li><code>@media not (orientation: portrait)</code></li>
+			<li><code>@media not (aspect-ratio: 4/3)</code></li>
 			<li><code>@media (min-width:400px) and (device-aspect-ratio: 16/9)</code></li>
 			<li><code>@media screen and (min-width:400px), <br>print and (max-width: 8.5in)</code></li>
 		</ul>
@@ -254,16 +254,26 @@
 	
 	
 	<section class="slide"><div>
-		<h2>Media queries in markup</h2>
-		<pre><code>&lt;link media="(device-width:480px)" rel="stylesheet"&#8230; &gt;</code></pre>
-		<pre><code>&lt;video src="movie.webm" media="(min-width:480px)"&gt;</code></pre>
-		<p class="demolink"><a href="demos/media/video.html" target="_blank">With video demo</a></p>
+		<h2>Media queries in style sheet links</h2>
+		<code>&lt;link media="(device-width:480px)" rel="stylesheet"&#8230; &gt;</code></li>
+	</div></section> 
+
+
+	<section class="slide"><div>
+		<h2>Media with the <code>&lt;video&gt;</code> element</h2>
+		<pre><code>&lt;video&gt;</code>
+		<code>    &lt;source src="smallmovie.webm" media="(min-width:480px)"&gt;</code>
+					<code>    &lt;source src="bigmovie.webm" media="(min-width:1900px)"&gt;</code>
+<code>&lt;video&gt;</code></pre>
+	
+		<p class="demolink"><a href="demos/media/video/" target="_blank">With video demo</a></p>
 	</div></section> 
 	
 	
 	
 	<section class="slide"><div>
 		<h2>Media queries in SVG</h2>
+		<p>Does <strong>not</strong> work in Internet Explorer 10.</p>
 		<ul>
 			<li>Based on the width of the SVG viewport</li>
 			<li>Can refine, show, or hide SVG details as the image is scaled</li>
@@ -285,7 +295,7 @@
 		<h2><code>window.matchMedia()</code> API</h2>
 		<ul>
 			<li>An API for interacting with media queries.</li>
-			<li>Defined in the <a href="http://dev.w3.org/csswg/cssom-view/#the-mediaquerylist-interface">CSSOM View specification</a></li>
+			<li>Defined in the <a href="http://w3c-test.org/csswg/mediaqueries3/">Media Queries Level 3 Specification</a></li>
 		</ul>
 	</div></section>
 
@@ -303,15 +313,18 @@
 	<section class="slide" id="mediaquerylist"><div>
 		<h2>MediaQueryList interface</h2>
 		<ul>
-			<li><code>media</code>: returns list of queries or <code>invalid</code> if the argument isn't valid.</li>
+			<li><code>media</code>: returns list of queries or <code>not all</code> if the argument isn't valid.</li>
 			<li><code>matches</code>: returns <code>true</code> if the state of the rendered document matches the media query, <code>false</code> otherwise</li>
 			<li><code>addListener()</code>: Adds a media query listener.</li>
 			<li><code>removeListener()</code>:  Removes the media query listener.</li>
 		</ul>
+		<footer>
+		 	* Chrome and Safari actually report "invalid" instead of "not all".
+		 </footer>
 	</div></section>
 
 	<section class="slide"><div>
-		<h2>MediaQueryList example</h2>
+		<h2>Adding a media query listener</h2>
 		<pre><code>function mqHandler(mq){</code>
 <code>    if( mq.matches ){</code>
 <code>        // do something</code>
@@ -320,11 +333,9 @@
 <code>var mq = matchMedia("(orientation:landscape)");</code>
 <code>mq.addListener( mqHandler );</code>		
 </pre>
-	</div></section>
+<p class="demolink" style="margin-top:-2rem;"><a href="demos/matchmedia/" target="_blank">matchMedia listener demo</a></p>
+</div></section>
 
-	<section class="slide shout demo"><div>
-		<h2><a href="demos/matchmedia/">matchMedia() demo</a></h2>
-	</div></section>
 
 	<section class="slide" id="match-media-browser-support"><div>
 		<h2><code>matchMedia()</code> browser support</h2>
@@ -364,15 +375,6 @@
 		</footer>
 	</div></section>
 
-
-	<section class="slide" id="supports-syntax"><div>
-		<h2><code>@supports</code> syntax</h2>
-<pre><code>@supports &lt;not&gt;( property: value-to-test ){
-	/* CSS rules to apply */
-}</code></pre>
-	<footer>Applies styles when the condition isn't met. Can use to include fallbacks for cases where a browser supports at-supports, but not a particular CSS feature.</footer>
-	</div></section>
-	
 	<section class="slide" id="how-at-supports-works"><div>
 	<h2>How <code>@supports</code> works</h2>
 	<ul>
@@ -386,6 +388,16 @@
 	compliant with the spec. Eric Meyer has a great critique about the limits of CSS.supports().
 	<a href="http://meyerweb.com/eric/thoughts/2013/03/19/unsupportable-promises/">http://meyerweb.com/eric/thoughts/2013/03/19/unsupportable-promises/</a></footer>
 	</div></section>
+
+
+	<section class="slide" id="supports-syntax"><div>
+		<h2><code>@supports</code> syntax</h2>
+<pre><code>@supports [not] ( property: value-to-test ){
+	/* CSS rules to apply */
+}</code></pre>
+	<footer>Applies styles when the condition isn't met. Can use to include fallbacks for cases where a browser supports at-supports, but not a particular CSS feature.</footer>
+	</div></section>
+	
 	
 	<section class="slide" id="supports-syntax-example"><div>
 		<h2><code>@supports</code> syntax example</h2>
@@ -442,7 +454,7 @@
 <code>if( hasProp ){</code>
 <code>    // do something</code>
 <code>}</code></pre>
-	<p>Returns <code>true</code> if the property <em>and value</em> are supported. Returns <code>false</code> otherwise.</p>
+	<p>Returns <code>true</code> if both property is supported, and the value is valid and supported. Returns <code>false</code> otherwise.</p>
 	<footer>supportsCSS() accepts the same parameters in the same order.</div></section>
 	
 	
@@ -470,7 +482,7 @@
 		   <td class="no">-</td>
 		</tr>
 	</table>
-	<p class="footnote">* Firefox support is available in version 17+, but behind a flag. Turned on by default in Firefox 22+ (Aurora and Firefox nightly builds). (<a href="http://caniuse.com/#search=supports">Source: CanIUse.com</a>).</p>
+	<p class="footnote">* Firefox support is available in version 17+, but behind a flag. Turned on by default in Firefox 20+ (Aurora and Firefox nightly builds). (<a href="http://caniuse.com/#search=supports">Source: CanIUse.com</a>).</p>
 	<footer>WebKit has support</a> available in the codebase, but it has not made its way into a Safari, Chrome, Chromium release. It is mostly available in Opera 14 beta, however. See: http://trac.webkit.org/changeset/142739 and https://bugs.webkit.org/show_bug.cgi?id=104795</footer>
 	</div></section>
 	

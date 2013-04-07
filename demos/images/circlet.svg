@@ -1,0 +1,35 @@
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="525px" height="523px" enable-background="new 0 0 525 523" xml:space="preserve">
+	 
+<defs>
+  <style type="text/css">
+  	circle{
+  		stroke-width: 40px;
+  		stroke-miterlimit: 10px;
+  	}
+  	#outer{
+  		stroke: #000;
+  	}
+	#outer, #circ1 {
+		fill: #e5ff1f;
+	}
+	#circ1{
+		stroke: #b0ff16;
+	}
+	#circ2, #circ3{
+		stroke: #e5ff1f;
+		fill: #b0ff16;
+	}
+	#letterT{
+		fill:#909;
+		stroke-width:10px;
+		stroke:#f90;
+	}
+  </style>
+</defs>
+<circle id="outer" cx="262.5" cy="262.5" r="234.5" />
+<circle id="circ1" cx="263"   cy="263" r="160" />
+<circle id="circ2" cx="263.072" cy="263.072" r="101.072" />
+<circle id="circ3" stroke-miterlimit="10" cx="263.483" cy="263.482" r="47.483" />
+
+</svg>

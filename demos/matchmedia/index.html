@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<title>Using matchMedia with the &lt;video&gt; element</title>
+	<link rel="stylesheet" href="../css/s.css" media="screen">
+	<style>
+		video{
+			background:#222;
+			margin: 2rem auto;
+			min-height:320px;
+			min-height:588px; 
+		}
+		
+		p,ul{margin:0;}
+	</style>
+</head>	
+<body>
+
+<main>
+	<h1>Using matchMedia() with the <code>&lt;video&gt;</code> element</h1>
+
+	<ul>
+		<li>Current <code>window.innerHeight</code>: <samp id="curheight"></samp></li>
+		<li>Current video source: <samp id="cursrc"></samp></li>
+	</ul>
+	
+	<video controls muted preload="metadata"  src="" id="vid">If you can see this, it means your browser doesn't support the video element.</video>
+	
+	<footer>
+		<p>Part of <a href="http://webinista.github.io/Conditional-CSS/">Conditional CSS</a><br>a talk by <a href="http://tiffanybbrown.com/">Tiffany B. Brown</a> at <a href="http://minnewebcon.org/">MinneWebCon</a> 2013.</p>
+	</footer>
+</main>
+
+
+<script src="../js/js.js"></script>
+<script>
+(function(){
+	var playtype  = Util.whichVideoType(),
+ 	vid = document.querySelector('video'),
+ 	samp = document.getElementsByTagName('samp'),
+ 	onresize = function(){
+ 		var cw = document.createTextNode( window.innerHeight );
+ 		Util.updateText( samp[0], cw, samp[0].firstChild);
+ 	},
+ 	
+ 	/* Set our small and large videos */
+ 	vids = {'lg':'../images/big_buck_bunny_trailer_480p', 'sm':'../images/big_buck_bunny_trailer_320p'},
+ 	
+ 	
+ 	/* Set the media queries we would like to match */
+ 	mq320 = matchMedia('(min-height: 320px)'),
+ 	mq480 = matchMedia('(min-height: 480px)'),
+ 	
+ 	
+ 	
+ 	
+ 	/* Get the current video source */
+ 	currentsrc = function(){
+ 		var file = vid.currentSrc.split('/'), 
+ 			cs = document.createTextNode( file[file.length - 1] );
+ 		Util.updateText( samp[1], cs, samp[1].firstChild);
+ 	},
+ 	
+ 	/* Swap the source based on the media query condition. */
+ 	swapsrc = function(o){
+ 		var src = null;
+		if( mq320.matches ){
+			src = vids.sm;
+		}
+		if( mq480.matches ){
+			src = vids.lg;
+		}
+		vid.src = src+'.'+playtype;
+		vid.play();
+ 	}
+ 
+ 
+/* Activated when the condition changes. */
+mq320.addListener(swapsrc);
+mq480.addListener(swapsrc);
+
+vid.addEventListener('loadedmetadata',currentsrc,false); 	
+window.addEventListener('resize',onresize,false);
+window.addEventListener('resize',currentsrc,false);
+
+window.addEventListener('DOMContentLoaded',currentsrc,false);
+
+/* 
+	Call swap src on DOM load to set the video source 
+	based on the rendered document state.
+*/
+window.addEventListener('DOMContentLoaded',swapsrc,false)
+window.addEventListener('DOMContentLoaded',onresize,false);
+
+})();
+
+
+
+</script>
+</body>
+</html>
+

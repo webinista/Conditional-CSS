@@ -48,6 +48,7 @@
 <body>
 	<header>
 		<h1>@media queries in SVG</h1>
+		<p>Unfortunately this example does not work in Internet Explorer 10 (or below).</p>
 	</header>
 
 
@@ -55,7 +56,13 @@
 		<div id="wrapper">
 		<form action="#" method="get" id="f">
 			<p>Adjust the value to <label for="imgwidth">change the width</label> of the images below.<br>
-			<input type="range" id="imgwidth" min="50" max="525" value="525" step="25">
+			<input type="range" id="imgwidth" min="50" max="525" value="525" step="25" list="breaks">
+			<datalist id="breaks">
+				<option>600</option>
+				<option>400</option>
+				<option>300</option>
+				<option>150</option>
+			</datalist>
 			</p>
 			<p><code>&lt;img width="</code><var></var><code>"&gt;</code></p>
 		</form>
