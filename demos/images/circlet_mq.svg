@@ -19,11 +19,6 @@
 		stroke: #e5ff1f;
 		fill: #b0ff16;
 	}
-	#letterT{
-		fill:#909;
-		stroke-width:10px;
-		stroke:#f90;
-	}
 	
 	@media screen and (max-width: 600px) {
 		circle {
@@ -67,13 +62,10 @@
 			transition: stroke-width 500ms ease-out, fill 500ms ease-out, stroke 500ms ease-out;
 		}
 	}
-	
-
   </style>
 </defs>
-<circle id="outer" cx="262.5" cy="262.5" r="234.5" />
-<circle id="circ1" cx="263"   cy="263" r="160" />
-<circle id="circ2" cx="263.072" cy="263.072" r="101.072" />
-<circle id="circ3" stroke-miterlimit="10" cx="263.483" cy="263.482" r="47.483" />
-
+	<circle id="outer" cx="262.5" cy="262.5" r="234.5" />
+	<circle id="circ1" cx="263"   cy="263" r="160" />
+	<circle id="circ2" cx="263.072" cy="263.072" r="101.072" />
+	<circle id="circ3" stroke-miterlimit="10" cx="263.483" cy="263.482" r="47.483" />
 </svg>

@@ -67,12 +67,12 @@
 			<p><code>&lt;img width="</code><var></var><code>"&gt;</code></p>
 		</form>
 		<figure class="imgwrap" id="mq">
-			<img src="../../images/circlet_mq.svg" alt="Encircled T with Media Queries">
+			<img src="../../images/circlet_mq.svg" alt="Circles with Media Queries">
 			<figcaption>Media queries in SVG.</figcaption>
 		</figure>
 		
 		<figure class="imgwrap">
-			<img src="../../images/circlet.svg" alt="Encircled T without Media Queries">
+			<img src="../../images/circlet.svg" alt="Circles without Media Queries">
 			<figcaption>No media queries.</figcaption>
 		</figure>
 
@@ -92,9 +92,10 @@
 		oninput = function(e){
 			Array.prototype.map.call(document.images,function(o){
 				o.width = +e.target.value;
+				console.log( o );
 			});
 			updateWidth(e.target.value);
-
+			
 		},
 		updateWidth = function(width){
 			var w = document.createTextNode( width );
@@ -106,6 +107,7 @@
 		document.getElementById('imgwidth').setAttribute('class','txt');
 	}
 	f.addEventListener('input', oninput, false);
+
 	f.addEventListener('submit', function(e){ e.preventDefault(); }, false);
 	
 	window.addEventListener('DOMContentLoaded',function(e){
