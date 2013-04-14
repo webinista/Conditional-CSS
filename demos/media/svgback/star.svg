@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="shapes" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="309.286px" height="295px" viewBox="0 0 309.286 295" enable-background="new 0 0 309.286 295" xml:space="preserve">
+
+<defs>
+  <style type="text/css">
+  
+   @media screen and (min-width:500px) {
+		#star {
+			stroke-width: 10px;
+			stroke: #e5ff1f;
+			fill: #000;
+			fill-opacity: .9;
+			transition: all 500ms ease-out;
+		}
+	}
+
+	@media screen and (max-width: 450px){
+		#star {
+			stroke-width: 30px;
+			stroke: #69f;
+			fill: #e5ff1f;
+			fill-opacity: 1;
+			transition: all 500ms ease-out;
+		}		
+	}
+	
+	@media screen and (max-width: 400px){
+		#star {
+			stroke-width: 39px;
+			stroke: #e5ff1f;
+			fill: #f3f;
+			transition: all 500ms ease-out;
+		}		
+	}
+	
+	@media screen and (max-width: 350px){
+		#star {
+			stroke-width: 33px;
+			stroke: #e5ff1f;
+			transition: all 500ms ease-out;
+		}		
+	}
+	
+	
+	@media screen and (max-width: 300px) {
+		#star {
+			stroke-width: 25px;
+			stroke: #e5ff1f;
+			fill: #000;
+			transition: all 500ms ease-out;
+		}		
+	}
+	
+	
+	@media screen and (max-width: 250px){
+		#star {
+			stroke-width: 18px;
+			stroke: #e5ff1f;
+			fill: #ff0;
+			fill-opacity: .85;
+			transition: all 500ms ease-out;
+		}		
+	}
+	
+	
+	@media screen and (max-width: 200px){
+		#star {
+			stroke-width: 10px;
+			stroke: #e5ff1f;
+			fill: #00c;
+			fill-opacity: .85;
+			transition: all 500ms ease-out;
+		}		
+	}
+	
+	@media screen and (max-width: 150px){
+		#star {
+			stroke-width: 5px;
+			stroke: #e5ff1f;
+			fill: #90f;
+			fill-opacity: .85;
+			transition: all 500ms ease-out;
+		}		
+	}
+
+	@media screen and (max-width: 100px){
+		#star {
+			stroke-width: 0px;
+			stroke: #e5ff1f;
+			fill: #000;
+			fill-opacity: .2;
+			transition: all 500ms ease-out;
+		}
+	}
+	
+	
+  </style>
+</defs>
+
+<polygon id="star" points="243.109,285.007 152.34,237.242 61.534,284.938 78.912,183.85 5.491,112.227 107,97.517 
+	152.429,5.556 197.788,97.552 299.286,112.34 225.81,183.907 "/>
+</svg>

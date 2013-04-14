@@ -6,16 +6,31 @@
 	<title>@support demonstration</title>
 	<link rel="stylesheet" href="../../css/s.css" media="screen">
 	<style media="screen" type="text/css">
+		body{
+			background: #eef;
+			padding: 2em;
+		}	
+		.onlywhensupported{
+			visibility: hidden;
+		}
 		@supports (transform: rotateX(45deg) ) {
 			body{
-				background: #eef;
-			}	
+				background: #cf9;
+			}
+		
 			#dragonfly{
 				perspective: 300px;
 			}
 			img{
-				transform: rotateX(45deg)
+			 	-webkit-transform: rotateX(45deg);
+				   -moz-transform: rotateX(45deg);
+				    -ms-transform: rotateX(45deg);
+				        transform: rotateX(45deg);
+				border: 1px solid transparent; /* Fixes jagged edges in Firefox */
 			}	
+			.onlywhensupported{
+				visibility: visible;
+			}
 		}
 
 		figcaption{
@@ -25,10 +40,14 @@
 	</style>
 </head>
 <body>
-<div id="warning"><b>Warning:</b> Your browser does not support the features showcased in this demo.</div>
+<div id="warning"><b>Warning:</b> Your browser does not support the features showcased in this demo. <a href="http://caniuse.com/#search=feature%20queries">Find one that does</a>.</div>
 
 <main>
 <h1>Using <code>@supports (transform: rotateX(45deg) ) </code></h1> 
+<p>If the browser supports the <code>transform</code> property and a value of <code>rotateX(45deg)</code>, the image below will be rotated, and the background light green. Otherwise, the background will be light purple.</p>
+
+<p class="onlywhensupported">If you can see this paragraph, congratulations! Your browser supports @supports <em>and</em> <code>transform: rotateX(45deg)</code>!</p>
+
 <figure id="dragonfly">
 	<img src="../../images/dragonfly_lg.jpg" alt="A dragonfly." class="swap">
  	<figcaption>A dragonfly rests on a leaf at the Borong Botanical Garden in Borong, Indonesia.</figcaption>

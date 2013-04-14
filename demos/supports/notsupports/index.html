@@ -6,13 +6,42 @@
 	<title>@support demonstration</title>
 	<link rel="stylesheet" href="../../css/s.css" media="screen">
 	<style media="screen" type="text/css">
+		body{
+			background: #eef;
+			padding: 2em;
+		}	
+		
+		p, h1{
+			position:relative;
+			z-index: 99;	
+		}
+		
+		@supports (transform: rotateX(45deg) ) {
+			body{
+				background: #cf9;
+			}
+		
+			#dragonfly{
+				perspective: 300px;
+			}
+			img{
+			 	-webkit-transform: rotateX(45deg);
+				   -moz-transform: rotateX(45deg);
+				    -ms-transform: rotateX(45deg);
+				        transform: rotateX(45deg);
+				border: 1px solid transparent; /* Fixes jagged edges in Firefox */
+			}	
+		}
+		
 		@supports not (transform: rotateX(45deg) ) {
 			body{
 				background: #fff6d1;
 			}	
-			
+			h1, #explainer{ background: rgba(255,246,209,.9); }
 			img{
-				transform: rotate(15deg)
+				transform:  skewX(-30deg);
+				border: 1px solid transparent;
+				
 			}	
 		}
 		figcaption{
@@ -21,10 +50,12 @@
 	</style>
 </head>
 <body>
-<div id="warning"><b>Warning:</b> Your browser does not support the features showcased in this demo.</div>
+<div id="warning"><b>Warning:</b> Your browser does not support the features showcased in this demo. <a href="http://caniuse.com/#search=feature%20queries">Find one that does</a>.</div>
 
 <main>
 	<h1>Using <code>@supports not (transform: rotateX(45deg) )</code></h1> 
+	<p id="explainer">In browsers that don't support a value of <code>rotateX(45deg)</code> for the <code>transform</code> property, the image below will be skewed 30 degrees along the x-axis instead.</p>
+	 
 	<figure id="dragonfly">
 		<img src="../../images/dragonfly_lg.jpg" alt="A dragonfly." class="swap">
  		<figcaption>A dragonfly rests on a leaf at the Borong Botanical Garden in Borong, Indonesia.</figcaption>

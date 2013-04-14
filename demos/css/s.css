@@ -1,5 +1,8 @@
+@import url(./sourcesanspro/stylesheet.css);
+@import url(./texgyre/stylesheet.css);
+
 html{
-	font: normal 18px / 3ex helvetica,arial,sans-serif;
+	font: normal 18px / 3ex 'SourceSansProLight',helvetica,arial,sans-serif;
 	color:#222;
 }
 header, article, footer{
@@ -8,8 +11,14 @@ header, article, footer{
 }
 article{padding-bottom: 3rem;}
 
+h1,h2,h3,h4,h5,h6{font-family: 'SourceSansProSemibold';}
+
+h1 code,h2 code,h3 code,h4 code,h5 code,h6 code,
+h1 kbd,h2 kbd,h3 kbd,h4 kbd,h5 kbd,h6 kbd{font-family: 'TeXGyreCursorBold';}
+
+pre,kbd,var,code{font-family:'TeXGyreCursorRegular'}
+
 h1{
-	font-family: inherit;
 	font-size: 2rem;
 	line-height:2ex;
 }

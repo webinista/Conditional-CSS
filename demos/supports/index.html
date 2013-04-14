@@ -5,13 +5,15 @@
 	<meta name="viewport" content="width=device-width,user-scalable=yes">
 	<title>@supports demos</title>
 	<link rel="stylesheet" href="../css/s.css" media="screen">
-	<style media="screen" type="text/css"></style>
+	<style>
+	.hide{display:none;}
+	</style>
 </head>
 <body>
 	<h1>@supports demos</h1>
-	<p>These examples require browsers that supports <code>@supports</code>. Your browser <b></b> this feature. <a href="http://caniuse.com/#search=@supports">Find a browser</a> that does. </p>
+	<p>These examples require browsers that supports <code>@supports</code>. Your browser <b></b> this feature. <span id="getanewbrowser" class="hide"><a href="http://caniuse.com/#search=@supports">Find a browser</a> that does.</span> </p>
 	
-	<p>As of 7 April, 2013, your best bet is to compare how these work in  Opera 12.1 versus Firefox 20.0a2+, the only browsers to date that support <code>@supports</code> and <code>CSS.supports()</code>.</p>
+	<p>As of 7 April, 2013, your best bet is to compare how these work in  Opera 12.1 versus Firefox 20.0a2+, the only browsers to date that support <code>@supports</code> and <code>CSS.supports()</code> without enabling a flag.</p>
 	
 		<ul>
 		<li><a href="supports/"><code>@supports</code></a></li>
@@ -23,15 +25,20 @@
 <script>
 	(function(){
 		window.addEventListener('DOMContentLoaded', function(e){
-			var supportsIt, b = document.querySelector('b');
+			var hasSupp, supportsIt, b = document.querySelector('b');
+			hasSupp = !!window.CSSRule.SUPPORTS_RULE;
+			hasSupp ? supportsIt = document.createTextNode('DOES') : supportsIt = document.createTextNode('DOES NOT');
 			
-			!!window.CSSRule.SUPPORTS_RULE ? supportsIt = document.createTextNode('DOES') : supportsIt = document.createTextNode('DOES NOT');
+			if( !hasSupp ){
+				document.getElementById('getanewbrowser').classList.remove('hide');
+			}
 			
 			if( b.firstChild ){
 				b.replaceChild( supportsIt, b.firstChild )
 			} else {
 				b.appendChild(supportsIt);
 			}			
+			
 		
 		},false);
 	

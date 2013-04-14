@@ -88,6 +88,15 @@
 		}
 		
 		.demolink{text-align:right;}
+		
+		#viewport-screens img{
+			width:300px;
+			margin-right: 1em;
+		}
+		#viewport-screens h2{margin-bottom:0}
+		#viewport-screens p{
+			margin:0;
+		}
 	</style>
 </head>
 <body class="list">
@@ -137,13 +146,13 @@
 			<li class="next"><code>@viewport</code></li>
 		</ul>
 		<footer>
-			<p>Includes our old friend @media which is part of the CSS Level 2 specification, and newer features and APIs:</p>
 			<ul>
-				<li>Media queries which extends @media.</li>
+				<li>Includes our old friend @media which is part of the CSS Level 2 specification</p>
+				<li>Media queries which extends @media</li>
 				<li>@supports offers native feature detection for CSS properties</li>
 				<li>@viewport applies styles based on the properties of a document's viewport</li>
 			</ul>
-			<p>These also have DOM and CSSOM-based APIs. All of it can be manipulated with scripting.</p>
+			<p>@supports and @media also have CSSOM APIs and can be manipulated with scripting.</p>
 		</footer>
 	</div></section>
 
@@ -425,7 +434,7 @@
 		<h2><code>@supports</code> example using <code>not</code></h2>
 <pre><code>@supports not ( transform: rotateX(45deg) ){
 	#myobj{
-		transform: rotate(-45deg) skewX(10deg);
+		transform: skewX(30deg);
 	}
 }</code></pre>
 	<p class="demolink"><a href="demos/supports/notsupports/" target="_blank">@supports using negation</a></p>
@@ -519,7 +528,7 @@
 		<h2>@viewport</h2>
 	</div></section>
 
-	<section class="slide detour"><div>
+	<section class="slide"><div>
 		<h2><code>&lt;meta name="viewport"&gt;</code></h2>
 		<ul>
 			<li class="next">First introduced in iOS Safari</li>
@@ -527,13 +536,62 @@
 			<li class="next">Divorces the document viewport dimensions from the browser window dimensions</li>	
 		</ul>
 	</div></section>
+
+
+	<section class="slide" id="viewport-screens"><div>
+		<h2>How viewport works</h2>
+		<p>Left: no viewport set. Right <code>width=device-width</code></p>
+		<p>
+			<img src="pictures/noviewport.png">
+			<img src="pictures/viewportdevicewidth.png">
+		</p>
+		<footer>
+		* Using a viewport meta tag resizes the layout viewport. 
+		* Visual effect is that the page is zoomed in or out depending on the value of <code>width</code> or <code>height</code>.
+		* Can set the layout viewport to whatever dimensions you want.
+	</div></section>
+
+
 	
-	<section class="slide detour"><div>
+	<section class="slide" id="at-viewport"><div>
 		<h2><code>@viewport</code></h2>
 		<ul>
 			<li class="next">Introduced by Opera in the <a href="http://dev.w3.org/csswg/css-device-adapt/">CSS Device Adaptation</a> specification</li>
-			<li class="next">Moves viewport information from the HTML document to CSS.</li>
+			<li class="next">Moves viewport information from the HTML document to CSS</li>
 		</ul>
+	</div></section>
+
+
+	<section class="slide" id="at-viewport-syntax"><div>
+		<h2><code>@viewport</code> syntax</h2>
+		<pre><code>@viewport{</code>
+<code>    descriptor: value;</code>
+<code>}</code>
+	</div></section>
+
+
+<section class="slide" id="at-viewport-descriptors"><div>
+		<h2><code>@viewport</code> descriptors</h2>
+	<div class="threecol">
+<ul>
+	<li>min-width </li>
+	<li>max-width</li>
+	<li>min-height</li>
+	<li>max-height</li>
+</ul>
+<ul>
+	<li>width</li>
+	<li>height</li>
+	<li>zoom</li>
+	<li>min-zoom</li>
+</ul>
+<ul>
+	<li>max-zoom</li>
+	<li>user-zoom</li>
+	<li>orientation</li>
+</ul>
+</div>
+<p style="clear:both">Same values you use with <code>&lt;meta name="viewport"&gt;</code>.</p>
 	</div></section>
 
 
@@ -575,20 +633,6 @@
 		
 	</div></section>
 	
-	
-	<section class="slide shout"><div>
-		<h2>What's next?</h2>
-	</div></section>
-
-
-	<section class="slide tobuild"><div>
-		<h2>More awesome media queries (Level 4)</h2>
-		<ul>
-			<li>http://dev.w3.org/csswg/mediaqueries4/</li>
-			<li>https://bugs.webkit.org/show_bug.cgi?id=87403</li>
-			<li>http://www.stucox.com/blog/the-good-and-bad-of-level-4-media-queries/</li>
-		</ul>
-	</div></section>
 
 	<section class="slide"><div>
 		<h2>Conditional CSS</h2>
@@ -596,7 +640,7 @@
 		<ul>
 			<li><a href="http://tiffanybbrown.com/">tiffanybbrown.com</a></li>
 			<li><a href="http://twitter.com/webinista">twitter.com/webinista</a></li>
-			<li>Slides at: <a href="http://webinista.github.com/Conditional-CSS/">http://webinista.github.com/Conditional-CSS/</a></li>
+			<li>Slides at: <a href="http://webinista.github.io/Conditional-CSS/">http://webinista.github.com/Conditional-CSS/</a></li>
 		</ul>
 	</div></section>
 	

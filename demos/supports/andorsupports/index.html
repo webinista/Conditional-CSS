@@ -2,53 +2,63 @@
 <html lang="en-us">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width,user-scalable=yes">
 	<title>@support demonstration</title>
 	<link rel="stylesheet" href="../../css/s.css" media="screen">
 	<style media="screen" type="text/css">
+		body{
+			background:rgba(51,102,153,.5);
+		}
+		
 		#wrapper{
 			padding: .5rem;
 			margin: 5rem;	
 			width: auto;	
 			text-align:center;
-			background: rgba(51,102,153,.5);
+			background-color: rgba(255,255,255,.95);
 			border: 1px solid rgb(51,102,153);
 		}
 		
 		img{
 			box-shadow: 0px 0px 5px #000;
-		}			
-		/* If the browser supports @supports and:
-			- the transform property with a value of rotate(15deg)
-			- AND EITHER multiple background images OR the object-fit property with a value of 'fill'
-			
-			You will see the backgrounds below.
-		*/
-						
+		}	
+		
+		#inner{
+			width:75%;
+			margin: 2em auto;
+			text-align:left;
+		}		
+							
 		@supports ( transform: rotate(15deg) ) 
 			and   ( ( background-image: url(../../images/star.svg), url(../../images/hexagon.svg) ) or (object-fit: fill ) ) 		
 			{
 
-					body{
-						background-color: #369;
-						background-image: url(../../images/star.svg), url(../../images/hexagon.svg);
-						background-size: 100px 100px, 50px 50px;
-					}	
-			
-					#wrapper{
-						background-color: rgba(255,255,255,.95);
-						border: 1px solid #fff;
-					}
+				body{
+					background-color: #06f;
+					background-image: url(../../images/star.svg), url(../../images/hexagon.svg);
+					background-size: 100px 100px, 50px 50px;
+				}	
+		
+				#wrapper{
+					background-color: rgba(255,255,255,.95);
+					border: 1px solid #fff;
+				}
 			}
 	
 	</style>
 </head>
 <body>
-<div id="warning"><b>Warning:</b> Your browser does not support the features showcased in this demo.</div>
+<div id="warning"><b>Warning:</b> Your browser does not support the features showcased in this demo. <a href="http://caniuse.com/#search=feature%20queries">Find one that does</a>.</div>
 <div id="wrapper">
+	<div id="inner">
 	<h1>Using <code>@supports</code> with <code>and</code> and <code>or</code></h1> 
- 	<p>View source to get a sense of what's going on here.</p>
-
+ 	<p>If the browser supports @supports and:</p>
+	<ul>
+		<li>The transform property with a value of <code>rotate(15deg)</code></li>
+		<li>AND EITHER multiple background images OR <code>object-fit: fill</code></li>
+	</ul>
+	<p>You'll see a compound background of stars and hexagons.</p>
+	
+	
 	<footer>
 		<p>Part of <a href="http://webinista.github.io/Conditional-CSS/">Conditional CSS</a><br>a talk by <a href="http://tiffanybbrown.com/">Tiffany B. Brown</a> at <a href="http://minnewebcon.org/">MinneWebCon</a> 2013.</p>
 	</footer>

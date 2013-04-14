@@ -45,7 +45,8 @@
  	},
  	
  	/* Set our small and large videos */
- 	vids = {'lg':'../images/big_buck_bunny_trailer_480p', 'sm':'../images/big_buck_bunny_trailer_320p'},
+ 	vids = {'lg':'../images/big_buck_bunny_trailer_480p', 
+ 		    'sm':'../images/big_buck_bunny_trailer_320p'},
  	
  	
  	/* Set the media queries we would like to match */
@@ -64,13 +65,17 @@
  	
  	/* Swap the source based on the media query condition. */
  	swapsrc = function(o){
- 		var src = null;
+ 		var src = null, warning = document.createTextNode('No video this size!');
 		if( mq320.matches ){
 			src = vids.sm;
+		} else {
+			Util.updateText( samp[1], warning, samp[1].firstChild);
+			return;
 		}
 		if( mq480.matches ){
 			src = vids.lg;
 		}
+		
 		vid.src = src+'.'+playtype;
 		vid.play();
  	}

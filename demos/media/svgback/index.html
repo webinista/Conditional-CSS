@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<title>Media queries in SVG and background-size</title>
+	<link rel="stylesheet" href="../../css/s.css" media="screen">
+	<style type="text/css" media="screen">
+	body{
+		background-color:#c09;
+		background-image: url(star.svg);
+	}
+	b,label[for=linkvalues]{
+		font-family:'SourceSansProSemibold';
+	}
+	form, #wrapper{
+		background: rgba(255,255,255,.98);
+		margin: 0 5rem;
+		padding: 1rem;
+	}
+	form{margin-top:3rem;}
+	#wrapper{
+		padding-top:0;
+		margin-top: -1rem;
+	}
+	form h1{
+		margin: .5rem;
+	}
+	input[type=range], input[type=text]{
+		font:inherit;
+		vertical-align:bottom;
+		min-width:200px;
+	}
+	#curvalue{
+		border:none;
+		width:300px;
+		background: transparent;
+	
+	}
+	fieldset{border:2px solid #ddd;}
+	fieldset p{display:inline-block; margin:0 1rem 0 1rem}
+	fieldset b{padding:0 3px;}
+	legend,label[for=bgsx], label[for=bgsy]{font-family: 'TeXGyreCursorRegular',monospace;}
+	button{
+		border: 2px outset #30f; 
+		color:#fff; 
+		background:#30f; 
+		font:inherit;
+		vertical-align:baseline;
+		line-height: 1.2rem;
+		
+	}	
+	.rangefix{border:1px inset #ccc;width:200px}
+	a:link{color:#30f;}
+	a:visited{color:#003;}
+	p{margin:0 0 1em 0;}
+	</style>
+</head>
+<body>
+	<main>
+		
+		<form action="#" method="get">
+			<h1>Media queries in SVG and background-size</h1>
+			<fieldset>
+				<legend>
+					background-size: x y
+				</legend>
+				<p><label for="bgsx">x</label>
+				<input type="range" id="bgsx" name="bgsx" value="" list="values" min="100" max="500" step="50"><b>px</b>
+				</p>
+				
+				<p><label for="bgsy">y</label>
+				<input type="range" id="bgsy" name="bgsy" value="" list="values" min="100" max="500" step="50"><b>px</b>
+				<datalist id="values">
+					<option>100</option>
+					<option>150</option>
+					<option>200</option>
+					<option>250</option>
+					<option>300</option>
+					<option>350</option>
+					<option>400</option>
+					<option>450</option>
+					<option>500</option>
+					<option>550</option>
+				</datalist></p>
+				<p><label for="linkvalues">link values?</label>
+				<input type="checkbox" checked id="linkvalues"></p>			
+			</fieldset>
+			<p><button type="reset">Reset</button></p>
+			<p><input type="text" id="curvalue" value="" disabled></p>
+		</form>
+		
+		<div id="wrapper">
+			<p>Your browser must support the following web platform features &#8230;</p>
+			<ul>
+				<li>Media queries</li>
+				<li>Media queries in SVG</li>
+				<li><code>background-size</code></li>
+			</ul>
+			<p>&#8230; <em>AND</em> must adjust the size of the SVG view port when the value of <code>background-size</code> changes. As of publication, Chrome and the latest WebKit nightly build (Safari Version 6.0.3, build 537+) are the only browsers that do. Other browsers <em>DO</em> however, support <a href="http://my.opera.com/ODIN/blog/2009/10/12/how-media-queries-allow-you-to-optimize-svg-icons-for-several-sizes">media queries in SVG</a>.</p>
+		</div>
+		
+	</main>
+<script>
+(function load(){
+
+	var CSSOM = document.styleSheets[1],
+		bodyrule = CSSOM.cssRules[0],
+		rng = document.querySelectorAll('input[type=range]'),
+		f = document.forms[0];
+
+
+	function oninput(e){
+		var v = [], bgp;
+	
+		if( document.getElementById('linkvalues').checked ){	
+			if(e.target.id == 'bgsx'){
+				rng[1].value = e.target.value;
+			} else {
+				rng[0].value = e.target.value;
+			}	
+		} 
+	
+		v[0] = rng[0].value;
+		v[1] = rng[1].value;	
+
+		bgp = v.join('px ')+'px';
+		bodyrule.style.setProperty('background-size', bgp);
+	
+		console.log( bodyrule );
+		
+		f['curvalue'].value = 'background-size: '+bodyrule.style['backgroundSize'];
+	}	
+
+	function fixrange(){
+		if( rng[0].type !== 'range'){
+			Array.prototype.map.call( rng, function(r){
+				r.setAttribute('class', 'rangefix');
+				r.removeAttribute('list');
+			});
+		
+		}
+	}
+
+	function onreset(e){
+		bodyrule.style.removeProperty('background-size');
+	}
+
+	window.addEventListener('DOMContentLoaded',fixrange, false);
+
+	f.addEventListener('input',oninput, false);
+	f.addEventListener('reset',onreset, false);
+})();
+
+
+</script>
+</body>
+</html>
