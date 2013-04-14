@@ -10,6 +10,16 @@
 		set slide ID to get needed elements
 		-->
 	<style type="text/css" id="local" title="local">
+		#Cover, .slide.shout{
+			background: rgb(255,0,187); /* Old browsers */
+			background: -moz-radial-gradient(center, ellipse cover, rgba(255,0,187,1) 1%, rgba(204,0,153,1) 99%); /* FF3.6+ */
+			background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(1%,rgba(255,0,187,1)), color-stop(99%,rgba(204,0,153,1))); /* Chrome,Safari4+ */
+			background: -webkit-radial-gradient(center, ellipse cover, rgba(255,0,187,1) 1%,rgba(204,0,153,1) 99%); /* Chrome10+,Safari5.1+ */
+			background: -o-radial-gradient(center, ellipse cover, rgba(255,0,187,1) 1%,rgba(204,0,153,1) 99%); /* Opera 12+ */
+			background: -ms-radial-gradient(center, ellipse cover, rgba(255,0,187,1) 1%,rgba(204,0,153,1) 99%); /* IE10+ */
+			background: radial-gradient(ellipse at center, rgba(255,0,187,1) 1%,rgba(204,0,153,1) 99%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff00bb', endColorstr='#cc0099',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+		}
 		#Cover h2 {
 			margin:65px 0 0;
 			color:#FFF;
@@ -22,7 +32,7 @@
 		.caption h1{
 			font-family: 'Open Sans';
 		}
-		.slide.shout, .full .progress div{background:#c09;}
+		.full .progress div{background:#c09;}
 		.slide a, .caption a{
 			color:#03f;
 		}
@@ -89,14 +99,6 @@
 		
 		.demolink{text-align:right;}
 		
-		#viewport-screens img{
-			width:300px;
-			margin-right: 1em;
-		}
-		#viewport-screens h2{margin-bottom:0}
-		#viewport-screens p{
-			margin:0;
-		}
 	</style>
 </head>
 <body class="list">
@@ -105,6 +107,7 @@
 		<p><a href="http://tiffanybbrown.com/">Tiffany B. Brown</a>, Webinista, Inc.</p>
 	</header>
 	<section class="slide cover" id="Cover"><div>
+		<br><br>
 		<h2>Conditional CSS</h2>
 	</div></section>
 	<!--  data-timing="00:05" -->
@@ -138,19 +141,17 @@
 	</div></section>
 			
 	<section class="slide"><div>
-		<h2>Conditional CSS: a few <code>@rules</code></h2>
+		<h2>Conditional CSS: two of the <code>@rules</code></h2>
 	
 		<ul>
 			<li class="next"><code>@media</code></li>
 			<li class="next"><code>@supports</code></li>
-			<li class="next"><code>@viewport</code></li>
 		</ul>
 		<footer>
 			<ul>
 				<li>Includes our old friend @media which is part of the CSS Level 2 specification</p>
 				<li>Media queries which extends @media</li>
 				<li>@supports offers native feature detection for CSS properties</li>
-				<li>@viewport applies styles based on the properties of a document's viewport</li>
 			</ul>
 			<p>@supports and @media also have CSSOM APIs and can be manipulated with scripting.</p>
 		</footer>
@@ -521,126 +522,18 @@
 		</ul>
 	<footer>
 	* CSSRule is part of the CSS Object Model. 
-	* An interface that acts as the parent interface for rules such as @viewport, @supports, @import, etc.</footer></div></section>
+	* An interface that acts as the parent interface for rules such as, @supports, @import, @viewport, etc.</footer></div></section>
 
 
-	<section class="slide shout"><div>
-		<h2>@viewport</h2>
-	</div></section>
 
-	<section class="slide"><div>
-		<h2><code>&lt;meta name="viewport"&gt;</code></h2>
-		<ul>
-			<li class="next">First introduced in iOS Safari</li>
-			<li class="next">Allows developers to constrain the dimensions of a page to a particular size</li>
-			<li class="next">Divorces the document viewport dimensions from the browser window dimensions</li>	
-		</ul>
-	</div></section>
-
-
-	<section class="slide" id="viewport-screens"><div>
-		<h2>How viewport works</h2>
-		<p>Left: no viewport set. Right <code>width=device-width</code></p>
-		<p>
-			<img src="pictures/noviewport.png">
-			<img src="pictures/viewportdevicewidth.png">
-		</p>
-		<footer>
-		* Using a viewport meta tag resizes the layout viewport. 
-		* Visual effect is that the page is zoomed in or out depending on the value of <code>width</code> or <code>height</code>.
-		* Can set the layout viewport to whatever dimensions you want.
-	</div></section>
-
-
-	
-	<section class="slide" id="at-viewport"><div>
-		<h2><code>@viewport</code></h2>
-		<ul>
-			<li class="next">Introduced by Opera in the <a href="http://dev.w3.org/csswg/css-device-adapt/">CSS Device Adaptation</a> specification</li>
-			<li class="next">Moves viewport information from the HTML document to CSS</li>
-		</ul>
-	</div></section>
-
-
-	<section class="slide" id="at-viewport-syntax"><div>
-		<h2><code>@viewport</code> syntax</h2>
-		<pre><code>@viewport{</code>
-<code>    descriptor: value;</code>
-<code>}</code>
-	</div></section>
-
-
-<section class="slide" id="at-viewport-descriptors"><div>
-		<h2><code>@viewport</code> descriptors</h2>
-	<div class="threecol">
-<ul>
-	<li>min-width </li>
-	<li>max-width</li>
-	<li>min-height</li>
-	<li>max-height</li>
-</ul>
-<ul>
-	<li>width</li>
-	<li>height</li>
-	<li>zoom</li>
-	<li>min-zoom</li>
-</ul>
-<ul>
-	<li>max-zoom</li>
-	<li>user-zoom</li>
-	<li>orientation</li>
-</ul>
-</div>
-<p style="clear:both">Same values you use with <code>&lt;meta name="viewport"&gt;</code>.</p>
-	</div></section>
-
-
-	<section class="slide" id="at-viewport-browser-support"><div>
-		<h2><code>@viewport</code> browser support</h2>
-		<table class="browsercompat">
-		<tr>
-		   <th><img src="pictures/ie.svg" class="logo" alt="Internet Explorer logo">IE</th>
-		   <th><img src="pictures/firefox.svg" class="logo" alt="Internet Explorer logo">Firefox</th>
-		   <th><img src="pictures/chrome.svg" class="logo" alt="Chrome logo">Chrome</th>
-		   <th><img src="pictures/safari.png" class="logo" alt="Safari logo">Safari</th>	
-		   <th><img src="pictures/opera.svg" class="logo" alt="Opera logo">Opera</th>				
-		   <th><img src="pictures/android.svg" class="logo" alt="Android logo">Android</th>
-		   <th><img src="pictures/blackberry.svg" class="logo" alt="BlackBerry logo" style="width: 4em">Blackberry</th>
-		</tr>
-		
-		<tr>
-		   <td class="yes">10*</td>
-		   <td class="no">-</td>
-		   <td class="no">-</td>
-		   <td class="no">-</td>
-		   <td class="yes">11+*&dagger;</td>
-		   <td class="no">-</td>	
-		   <td class="no">-</td>
-		</tr>
-	</table>
-	<p class="footnote">*Requires a vendor prefix (-ms- or -o-). &dagger; Presto-based Opera only.</p>
-	<footer>Firefox' implementation is still in the works. 
-	Webkit implementation is complete, but not yet in a major release. Will require a -webkit- prefix.<a href="http://trac.webkit.org/changeset/133084 ">http://trac.webkit.org/changeset/133084</a>
-	Chromium/Blink is also tracking it. <a href="https://code.google.com/p/chromium/issues/detail?id=155477">https://code.google.com/p/chromium/issues/detail?id=155477</a>
-	Oprium beta doesn't have support yet.
-	</footer>
-	</div></section>
-
-	
-	<section class="slide"><div>
-		<h2>Testing for <code>@viewport</code> support</h2>
-		<pre><code>var hasViewport = !!window.CSSRule.VIEWPORT_RULE;</code></pre>
-		
-	</div></section>
-	
 
 	<section class="slide"><div>
 		<h2>Conditional CSS</h2>
 		<p>Tiffany B. Brown</p>
 		<ul>
 			<li><a href="http://tiffanybbrown.com/">tiffanybbrown.com</a></li>
-			<li><a href="http://twitter.com/webinista">twitter.com/webinista</a></li>
-			<li>Slides at: <a href="http://webinista.github.io/Conditional-CSS/">http://webinista.github.com/Conditional-CSS/</a></li>
+			<li><a href="http://twitter.com/webinista">@webinista</a></li>
+			<li>Slides at: <a href="http://webinista.github.io/Conditional-CSS/">http://webinista.github.io/Conditional-CSS/</a></li>
 		</ul>
 	</div></section>
 	
