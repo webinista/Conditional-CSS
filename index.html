@@ -12,12 +12,12 @@
 	<style type="text/css" id="local" title="local">
 		#Cover{
 			background-color: #ee28c5;
-			background-image: -webkit-gradient(radial, 50% 50%,0,50% 50%,200, from(rgb(114, 22, 119)), to(rgb(238, 40, 197)));
-			background-image: -webkit-radial-gradient(50% 50%, rgb(238, 40, 197), rgb(114, 22, 119));
-			background-image: -moz-radial-gradient(50% 50%, rgb(238, 40, 197), rgb(114, 22, 119));
-			background-image: -o-radial-gradient(50% 50%, rgb(238, 40, 197), rgb(114, 22, 119));
-			background-image: -ms-radial-gradient(50% 50%, rgb(238, 40, 197), rgb(114, 22, 119));
-			background-image: radial-gradient(50% 50%, rgb(238, 40, 197), rgb(114, 22, 119));
+			background-image: -webkit-gradient(radial, 50% 50%,0,50% 50%,200, from(rgb(179, 20, 196)), to(rgb(238, 40, 197)));
+			background-image: -webkit-radial-gradient(50% 50%, rgb(238, 40, 197), rgb(179, 20, 196));
+			background-image: -moz-radial-gradient(50% 50%, rgb(238, 40, 197), rgb(179, 20, 196));
+			background-image: -o-radial-gradient(50% 50%, rgb(238, 40, 197), rgb(179, 20, 196));
+			background-image: -ms-radial-gradient(50% 50%, rgb(238, 40, 197), rgb(179, 20, 196));
+			background-image: radial-gradient(50% 50%, rgb(238, 40, 197), rgb(179, 20, 196));
 		}
 		
 		.slide.shout{
@@ -138,9 +138,10 @@
 	<section class="slide"><div>
 		<h2>Who am I?</h2>
 		<ul>
-			<li>Former member of the Opera Developer Relations Team</li>
+			<li>@webinista on the Twitters</li>
+			<li>Former member of the Opera Developer Relations &amp; Tools Team</li>
 			<li>Currently a freelance web developer</li>
-			<li>2012 MinneWebCon speaker and fan of Minneapolis<br>(but not Minneapolis winters)</li>
+			<li>2012 MinneWebCon speaker and fan of Minneapolis between<br>May and September.</li>
 		</ul>
 	
 	</div></section>
@@ -160,11 +161,12 @@
 	</div></section>
 			
 	<section class="slide"><div>
-		<h2>Conditional CSS: two of the <code>@rules</code></h2>
+		<h2>Conditional CSS: three <code>@rules</code></h2>
 	
 		<ul>
 			<li class="next"><code>@media</code></li>
 			<li class="next"><code>@supports</code></li>
+			<li class="next"><code>@viewport</code> (not really conditional)</li>
 		</ul>
 		<footer>
 			<ul>
@@ -573,7 +575,7 @@
     <pre><code>@viewport{</code>
 	<code>    descriptor: value;</code>
 	<code>}</code></pre>
-	<p>Used inside of a media query to reset the viewport size.</p>
+	<p>Used inside of a media query to reset the viewport size or zoom level.</p>
   </div></section>
 
 
@@ -645,7 +647,7 @@
 
 	<section class="slide" id="viewport-units-defined"><div>
      <h2 style="margin-bottom:.5em">Viewport sizing units</h2>
-     <p style="margin:.5em auto">Relative sizing units. Percentage based. Dependent on viewport.</p>
+     <p style="margin:.5em auto">Sizes relative to the viewport's dimensions.</p>
 	 <ul>
 		<li> <code>vw</code>: 1% of viewport width</li>
 		<li> <code>vh</code>: 1% viewport height</li>
@@ -685,10 +687,11 @@
      <h2>Viewport sizing units</h2>
      <pre><code>#myobj{</code>
      <code>   width: 40vw;</code>
+    <code>   height: 90vw;</code>
      <code>}</code></pre>
    <p class="demolink"><a href="demos/viewportunits/">Viewport units demo</a></p>
    <footer>Be cautious about using this for font-sizing two reasons:
-   1. Not all browsers re-size text when the viewport is re-sized.
+   1. Chrome and Safari currently do not resize text when the viewport is resized.
   		* Can hack around this by adjusting the element's z-index on resize, which forces a repaint (technique discovered by Chris Coyier http://css-tricks.com/viewport-sized-typography/)  
    2. But currently no way within CSS to set a minimum or maximum font size.
    </footer>
