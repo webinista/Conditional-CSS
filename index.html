@@ -10,7 +10,17 @@
 		set slide ID to get needed elements
 		-->
 	<style type="text/css" id="local" title="local">
-		#Cover, .slide.shout{
+		#Cover{
+			background-color: #ee28c5;
+			background-image: -webkit-gradient(radial, 50% 50%,0,50% 50%,200, from(rgb(114, 22, 119)), to(rgb(238, 40, 197)));
+			background-image: -webkit-radial-gradient(50% 50%, rgb(238, 40, 197), rgb(114, 22, 119));
+			background-image: -moz-radial-gradient(50% 50%, rgb(238, 40, 197), rgb(114, 22, 119));
+			background-image: -o-radial-gradient(50% 50%, rgb(238, 40, 197), rgb(114, 22, 119));
+			background-image: -ms-radial-gradient(50% 50%, rgb(238, 40, 197), rgb(114, 22, 119));
+			background-image: radial-gradient(50% 50%, rgb(238, 40, 197), rgb(114, 22, 119));
+		}
+		
+		.slide.shout{
 			background: rgb(255,0,187); /* Old browsers */
 			background: -moz-radial-gradient(center, ellipse cover, rgba(255,0,187,1) 1%, rgba(204,0,153,1) 99%); /* FF3.6+ */
 			background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(1%,rgba(255,0,187,1)), color-stop(99%,rgba(204,0,153,1))); /* Chrome,Safari4+ */
@@ -34,8 +44,13 @@
 		}
 		.full .progress div{background:#c09;}
 		.slide a, .caption a{
-			color:#03f;
+			color:#721677;
 		}
+		
+		.slide a:hover, .caption a:hover{
+			color:#ee28c5;
+		}
+		
 		.slide code{
 			padding: 2px;
 		}
@@ -75,7 +90,8 @@
 			background:#ffc;
 		}
 		.yes{color:#0c0;}
-		.no,.emphasize{color: #c00;}
+		.emphasize{color: #c00;}
+		.no{ color: #666;}
 		.sorta{color: #fc0;}
 		.maybe{color:#f60;}
 		.logo{width:3em;height:3em;display:block;margin:0 auto}
@@ -99,6 +115,10 @@
 		
 		.demolink{text-align:right;}
 		
+		#viewport-screens img{
+			width: 350px;
+			margin-right: 20px;
+		}
 	</style>
 </head>
 <body class="list">
@@ -110,7 +130,6 @@
 		<br><br>
 		<h2>Conditional CSS</h2>
 	</div></section>
-	<!--  data-timing="00:05" -->
 
 	<section class="slide shout"><div>
 		<h2>Who am I?</h2>
@@ -225,7 +244,7 @@
 		   <td class="yes">2.1+</td>		
 		   <td class="yes">7.0</td>
 		</tr>
-	</table>
+		</table>
 	<p class="footnote">*Safari had full support in desktop as of version 4.0.<br>**Opera gained full support in mobile in version 10. (<a href="http://caniuse.com/#search=media%20queries">Source: CanIUse.com</a>)</p>
 	</div></section>
 	<section class="slide"><div>
@@ -409,17 +428,6 @@
 }</code></pre>
 	<footer>Applies styles when the condition isn't met. Can use to include fallbacks for cases where a browser supports at-supports, but not a particular CSS feature.</footer>
 	</div></section>
-
-
-	<section class="slide" id="supports-syntax"><div>
-		<h2><code>@supports</code> syntax</h2>
-<pre><code>@supports [not] ( property: value-to-test ){
-	/* CSS rules to apply */
-}</code></pre>
-	<footer>Applies styles when the condition isn't met. Can use to include fallbacks for cases where a browser supports at-supports, but not a particular CSS feature.</footer>
-	</div></section>
-	
-	
 	
 	<section class="slide" id="supports-syntax-example"><div>
 		<h2><code>@supports</code> syntax example</h2>
@@ -524,18 +532,172 @@
 	* CSSRule is part of the CSS Object Model. 
 	* An interface that acts as the parent interface for rules such as, @supports, @import, @viewport, etc.</footer></div></section>
 
-
-
-
-	<section class="slide"><div>
-		<h2>Conditional CSS</h2>
-		<p>Tiffany B. Brown</p>
-		<ul>
-			<li><a href="http://tiffanybbrown.com/">tiffanybbrown.com</a></li>
-			<li><a href="http://twitter.com/webinista">@webinista</a></li>
-			<li>Slides at: <a href="http://webinista.github.io/Conditional-CSS/">http://webinista.github.io/Conditional-CSS/</a></li>
-		</ul>
+	<section class="slide shout"><div>
+		<h2>@viewport</h2>
 	</div></section>
+
+
+  <section class="slide"><div>
+     <h2><code>&lt;meta name="viewport"&gt;</code></h2>
+     <ul>
+       <li class="next">First introduced in iOS Safari</li>
+       <li class="next">Divorces the document viewport dimensions from the browser window dimensions</li>  
+     </ul>
+   </div></section>
+
+
+   <section class="slide" id="viewport-screens"><div>
+    <h2>How viewport works</h2>
+    <p>Left: no viewport set. Right <code>width=device-width</code></p>
+    <p>
+      <img src="pictures/noviewport.png">
+      <img src="pictures/viewportdevicewidth.png">
+    </p>
+    <footer>
+    * Using a viewport meta tag resizes the layout viewport. 
+    * Visual effect is that the page is zoomed in or out depending on the value of <code>width</code> or <code>height</code>.
+    * Can set the layout viewport to whatever dimensions you want.
+  </div></section>
+
+  <section class="slide" id="at-viewport"><div>
+     <h2><code>@viewport</code></h2>
+     <ul>
+       <li class="next">Outlined in the <a href="http://dev.w3.org/csswg/css-device-adapt/">CSS Device Adaptation</a> specification</li>
+      <li class="next">Moves viewport information from the HTML document to CSS</li>
+     </ul>
+   </div></section>
+ 
+ 
+  <section class="slide" id="at-viewport-syntax"><div>
+    <h2><code>@viewport</code> syntax</h2>
+    <pre><code>@viewport{</code>
+	<code>    descriptor: value;</code>
+	<code>}</code></pre>
+	<p>Used inside of a media query to reset the viewport size.</p>
+  </div></section>
+
+
+  <section class="slide" id="at-viewport-syntax-mq"><div>
+    <h2><code>@viewport</code> syntax</h2>
+    <pre><code>@media screen and (device-aspect-ratio: 8/5){</code>
+	<code>    @viewport{</code>
+	<code>         zoom: 0.5</code>
+	<code>    }</code>
+	<code>}</code></pre>
+  </div></section>
+
+
+<section class="slide" id="at-viewport-descriptors"><div>
+    <h2><code>@viewport</code> descriptors</h2>
+  <div class="threecol">
+	<ul>
+	  <li>min-width </li>
+	  <li>max-width</li>
+	  <li>min-height</li>
+	  <li>max-height</li>
+	</ul>
+	<ul>
+	  <li>width</li>
+	  <li>height</li>
+	  <li>zoom</li>
+	  <li>min-zoom</li>
+	</ul>
+	<ul>
+	  <li>max-zoom</li>
+	  <li>user-zoom</li>
+	  <li>orientation</li>
+	</ul>
+</div>
+<p style="clear:both">Mostly the same values you use with <code>&lt;meta name="viewport"&gt;</code>.</p>
+ <footer>user-zoom is one exception. It's the equivalent of user-scalable, but instead of yes or no, your options are fixed and zoom.</footer>
+  </div></section>
+
+ <section class="slide" id="at-viewport-browser-support"><div>
+     <h2><code>@viewport</code> browser support</h2>
+    <table class="browsercompat">
+		<tr>
+		   <th><img src="pictures/ie.svg" class="logo" alt="Internet Explorer logo">IE</th>
+		   <th><img src="pictures/firefox.svg" class="logo" alt="Internet Explorer logo">Firefox</th>
+		   <th><img src="pictures/chrome.svg" class="logo" alt="Chrome logo">Chrome</th>
+		   <th><img src="pictures/safari.png" class="logo" alt="Safari logo">Safari</th>	
+		   <th><img src="pictures/opera.svg" class="logo" alt="Opera logo">Opera</th>				
+		   <th><img src="pictures/android.svg" class="logo" alt="Android logo">Android</th>
+		   <th><img src="pictures/blackberry.svg" class="logo" alt="BlackBerry logo" style="width: 4em">Blackberry</th>
+		</tr>
+		
+		<tr>
+		   <td class="yes">10+*</td>
+		   <td class="no">-</td>
+		   <td class="no">-</td>
+		   <td class="no">-</td>	
+		   <td class="yes">11+*</td>		
+		   <td class="no">-</td>		
+		   <td class="no">-</td>
+		</tr>
+		</table>
+		<p class="footnote"><a href="http://docs.webplatform.org/wiki/css/atrules/@viewport">Source</a></p>
+   <footer>Fall back, of course, is to use metaname="viewport."</footer>
+   </div></section>
+
+	<section class="slide shout" id="viewport-units"><div>
+		<h2>Viewport sizing units</h2>
+	</div></section>
+
+	<section class="slide" id="viewport-units-defined"><div>
+     <h2 style="margin-bottom:.5em">Viewport sizing units</h2>
+     <p style="margin:.5em auto">Relative sizing units. Percentage based. Dependent on viewport.</p>
+	 <ul>
+		<li> <code>vw</code>: 1% of viewport width</li>
+		<li> <code>vh</code>: 1% viewport height</li>
+		<li> <code>vmin</code>: 1% of viewport&#8217;s smaller dimension</li>
+		<li> <code>vmax</code>: 1% of viewport&#8217;s larger dimension</li>
+	</ul>
+   </div></section>
+
+  <section class="slide" id="viewport-units-support"><div>
+     <h2>Viewport sizing units</h2>
+    <table class="browsercompat">
+		<tr>
+		   <th><img src="pictures/ie.svg" class="logo" alt="Internet Explorer logo">IE</th>
+		   <th><img src="pictures/firefox.svg" class="logo" alt="Internet Explorer logo">Firefox</th>
+		   <th><img src="pictures/chrome.svg" class="logo" alt="Chrome logo">Chrome</th>
+		   <th><img src="pictures/safari.png" class="logo" alt="Safari logo">Safari</th>	
+		   <th><img src="pictures/opera.svg" class="logo" alt="Opera logo">Opera</th>				
+		   <th><img src="pictures/android.svg" class="logo" alt="Android logo">Android</th>
+		   <th><img src="pictures/blackberry.svg" class="logo" alt="BlackBerry logo" style="width: 4em">Blackberry</th>
+		</tr>
+		
+		<tr>
+		   <td class="yes">9.0+*</td>
+		   <td class="yes">19+</td>
+		   <td class="yes">20+**</td>
+		   <td class="yes">6+</td>	
+		   <td class="no">-&dagger;</td>		
+		   <td class="no">-</td>		
+		   <td class="yes">10</td>
+		</tr>
+		</table>
+		<p class="footnote">* Partial support in IE9. **Chrome for Android added support in version 25. &dagger;Presto-based Opera. Oprium will inherit Chrome's support. <a href="http://caniuse.com/#search=viewport">Source</a></p>
+   <footer>Be sure to indicate a fall back using pixels, ems, etc. Or checkout Lea Verou's <a href="https://gist.github.com/1347501">polyfill</a>.</footer>
+   </div></section>
+   
+     <section class="slide" id="viewport-units-syntax"><div>
+     <h2>Viewport sizing units</h2>
+     <pre><code>#myobj{</code>
+     <code>   width: 40vw;</code>
+     <code>}</code></pre>
+   <p class="demolink"><a href="demos/viewportunits/">Viewport units demo</a></p>
+   <footer>Be cautious about using this for font-sizing two reasons:
+   1. Not all browsers re-size text when the viewport is re-sized.
+  		* Can hack around this by adjusting the element's z-index on resize, which forces a repaint (technique discovered by Chris Coyier http://css-tricks.com/viewport-sized-typography/)  
+   2. But currently no way within CSS to set a minimum or maximum font size.
+   </footer>
+   </div></section>
+   
+
+   <section class="slide shout"><div>
+	<h2 style="font-size:90px;">is.gd/9f1miC</h2>
+   </div></section>
 	
 	<!--
 		To hide progress bar from entire presentation

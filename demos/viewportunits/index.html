@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Viewport unit sizing demonstration</title>
+	<link rel="stylesheet" href="../css/s.css" media="screen">
+	<style media="screen">
+	html,body{
+		margin:0;padding:0;
+		font-size: 4vh; /* Don't do this! */
+		position:relative;
+	}
+	article{
+		width: 90vw;
+		line-height: 1.5;
+		padding:0;
+	}
+	header{
+		height: 10vh;
+		background: #609;
+		width:100vw;
+		color:#fff;
+	
+	}
+	header h1{
+		margin:0 1em;
+		line-height:1.5;
+	}
+	</style>
+</head>
+<body>
+
+<header>
+	<h1>Viewport unit sizing demonstration</h1>
+</header>
+
+<article>
+<h1>Career crossroads, culture and community</h1>
+
+<p><img src="../images/lake.jpg" width="100%"  alt="Moottoritie - Highway"></a>My stretch of funemployment has given me some time to consider the themes of culture and community, particularly as they relate to the world of technology. It&#8217;s safe to say that I&#8217;m at a career crossroads. I&#8217;m deciding whether to continue in tech or whether to pivot into another career entirely.</p>
+<p>What has brought things to a head, I think, is the realization that the tech industry can be isolating &#8212; maddeningly isolating &#8212; for a black woman.</p>
+
+<p>I&#8217;m tired of being The Only. </p>
+
+<p>Developers are awfully fond of the word &#8220;community.&#8221;  The word comes up again and again when discussing programming languages. We speak of a JavaScript community, a PHP community, or just generally, a developer community. But communities have norms and boundaries, usually unspoken. It&#8217;s those unspoken boundaries that I want to talk about.</p>
+
+<p>It&#8217;s not a secret that tech &#8212; and I&#8217;ll focus here on web developers and designers &#8212; is really white and really male. According to the A List Apart 2011 Survey (the latest year published), our industry is <a href="http://archive.aneventapart.com/alasurvey2011/00.html#eth">87.1% white</a> and <a href="http://archive.aneventapart.com/alasurvey2011/00.html#gen">81.6% male</a>. It&#8217;s also only 1.2% Black / African.<sup><a href="#n1-20130315">*</a></sup> Surveys have their biases, of course. But my experiences seem to prove this right. If there are 50 web developers in a room, there&#8217;s a <em>really</em> high likelihood that I will be the only woman <em>and</em> the only black person. <a href="http://en.wikipedia.org/wiki/Intersectionality">Intersectionality</a> is my career struggle. </p>
+
+<p>People tend to befriend those who share their background, interests and outlook. I&#8217;m no exception. My friend circle is made up of hip-hop heads, sports fans, feminists, secularists, music addicts, art lovers, writers, cocktail enthusiasts, queer people and their allies, tomboys, and (oddly) librarians. Most of us are educated, sometimes highly. They also look more like me &#8212; tending towards women and people of color &#8212; than the attendees of your average technology gathering. </p>
+
+<p>When I walk into a tech event, an interview, or any room full of strangers, I scan it for potential friends. People who match that pattern are the ones I feel most comfortable approaching. I even look and listen for signs: rainbow stickers on the laptop, Nike or Adidas high tops, or jokes that reference the music I listen to. When I don&#8217;t see people who match my pattern, I feel extremely out of place. </p>
+
+<p>I think the same is true for most of us. And therein lies the problem, or my problem, anyway. Web developer communities often feel desperately homogeneous in terms of their culture.<sup><a href="#n2-20130315">**</a></sup> Peppering a talk with <em class="title movie">Star Wars</em> or punk music references is cool. But I&#8217;d feel more at home if there were more devs who could make Jay-Z jokes or catch my Drake references. I&#8217;m honestly not sure what to do about that. But I know it&#8217;s part of what keeps me from participating in these communities.</p>
+
+<p>Why is this important? Because community connections and work relationships make or break careers. Indeed having a work friend actually <a href="http://scholarworks.umass.edu/cgi/viewcontent.cgi?article=1053&#038;context=gradconf_hospitality">increases your work satisfaction</a>. If you can&#8217;t make friends in your industry or at your work place, what is the likelihood that you&#8217;ll remain in either?</p>
+
+<p>Culture and community aren&#8217;t exclusively web developer problems, of course. Librarian culture and its community, for example, is heavily gendered and skews female. Again, I don&#8217;t even pretend to know how to fix this. But I can say that for me, this developer culture is a big reason why I don&#8217;t feel like I am a part of its community. </p>
+
+<p class="footnote" id="n1-20130315">* I have trouble with that label because &#8220;African&#8221; is not the same as &#8220;black.&#8221; Black as an identity really only exists in contrast to white and most Africans don&#8217;t have to work with that issue. Kind of like how &#8220;Hispanic/Latino&#8221; doesn&#8217;t exist outside of the United States.</p>
+<p class="footnote" id="n2-20130315">**Yeah, I realize the limits of this sentence once we step outside of a U.S. context.</p>
+</article>
+
+<script>
+// Forces a repaint.
+// See Chris Coyier's post http://css-tricks.com/viewport-sized-typography/
+if( window.location.search == '?repaint=true' ){
+	window.onresize = function(e){
+		var bdy = document.querySelector('body');
+		bdy.style.zIndex = 1;
+	}
+}
+
+
+</script>
+
+</body>
+</html>
