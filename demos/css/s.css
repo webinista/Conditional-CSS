@@ -1,5 +1,5 @@
-@import url(./sourcesanspro/stylesheet.css);
-@import url(./texgyre/stylesheet.css);
+@import url(https://tiffsfontbucket.s3.amazonaws.com/sourcesanspro/stylesheet.css);
+@import url(https://tiffsfontbucket.s3.amazonaws.com/texgyre/stylesheet.css);
 
 html{
 	font: normal 18px / 3ex 'SourceSansProLight',helvetica,arial,sans-serif;
